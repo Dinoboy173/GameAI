@@ -1,29 +1,49 @@
 #include <iostream>
 #include <string>
 
-std::string RepeatLetters(char repeatNum, std::string repeatStr)
+bool IsNum(char character)
+{
+    if (character > '0' && character <= '9')
+        return true;
+
+    return false;
+}
+
+std::string BuildSubString(int repeatNum, std::string repeatStr)
 {
     std::string resultStr = "";
 
-    // for (int i = 0; i < repeatStr.length(); i++)
-    // {
-    //     if ()
-    // 
-    //     //resultStr += repeatStr[i];
-    // }
+    for (int i = 0; i < repeatStr.length(); i++)
+    {
+        if (IsNum(repeatStr[i]))
+        {
+            // maybe check if substring within first then process them differently to there being none
 
-    std::cout << repeatNum << " " << repeatStr << std::endl;
+            // need header folder to access stringBuilder
+            // feed substring into stringBuilder
+        }
+        else
+        {
+            for (int j = 0; j < repeatNum; j++)
+            {
+                resultStr += repeatStr[i];
+            }
+        }
+    }
 
-    return repeatStr;
+    //std::cout << repeatNum << " " << repeatStr << std::endl;
+
+    return resultStr;
 }
 
 std::string stringBuilder(std::string input)
 {
     int counter = 0;
-    char repeatNum = 0;
+    int repeatNum = 0;
     std::string repeatStr = "";
     std::string resultStr = "";
     bool copying = false;
+    bool isNum = false;
 
     for (int i = 0; i < input.length(); i++)
     {
@@ -33,25 +53,41 @@ std::string stringBuilder(std::string input)
         // else move on
         // if letter copy till bracket
 
-        if (input[i] == '[')
+        if (!copying)
         {
-            counter++;
-
-            if (!copying) repeatNum = input[i - 1];
-
-            copying = true;
-        }
-        else if (input[i] == ']')
-        {
-            counter--;
-            if (counter == 0)
+            if (IsNum(input[i]))
             {
-                copying = false;
-
-                resultStr += RepeatLetters(repeatNum, repeatStr);
-
-                repeatStr = "";
+                repeatNum = input[i] - '0';
+                isNum = true;
             }
+        }
+
+        if (isNum)
+        {
+            if (input[i] == '[')
+            {
+                counter++;
+
+                copying = true;
+            }
+            else if (input[i] == ']')
+            {
+                counter--;
+                if (counter == 0)
+                {
+                    copying = false;
+
+                    resultStr += BuildSubString(repeatNum, repeatStr);
+
+                    repeatStr = "";
+
+                    isNum = false;
+                }
+            }
+        }
+        else
+        {
+            resultStr += input[i];
         }
 
         if (copying)

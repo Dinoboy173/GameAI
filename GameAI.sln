@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AgentsAndBehaviors", "AgentsAndBehaviors", "{96B49438-93F0-4979-8679-DD5284AF542E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tutorials", "Tutorials", "{662415C3-1BA6-41B9-A357-CF04BED1E5FD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WarmUps", "WarmUps", "{92C018F2-BCAF-40DD-BB98-090E9538C650}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_WarmUp_01_CasualStringBuilder", "WarmUps\AIE_WarmUp_01_CasualStringBuilder\AIE_WarmUp_01_CasualStringBuilder.vcxproj", "{54247374-518D-4930-9FE1-22CFF472F1ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameAI", "GameAI\GameAI\GameAI.vcxproj", "{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,12 +25,19 @@ Global
 		{54247374-518D-4930-9FE1-22CFF472F1ED}.Release|x64.Build.0 = Release|x64
 		{54247374-518D-4930-9FE1-22CFF472F1ED}.Release|x86.ActiveCfg = Release|Win32
 		{54247374-518D-4930-9FE1-22CFF472F1ED}.Release|x86.Build.0 = Release|Win32
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Debug|x64.ActiveCfg = Debug|x64
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Debug|x64.Build.0 = Debug|x64
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Debug|x86.ActiveCfg = Debug|Win32
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Debug|x86.Build.0 = Debug|Win32
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Release|x64.ActiveCfg = Release|x64
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Release|x64.Build.0 = Release|x64
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Release|x86.ActiveCfg = Release|Win32
+		{96BD0593-E38A-4BAA-B6F9-848EB428ECAD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{662415C3-1BA6-41B9-A357-CF04BED1E5FD} = {96B49438-93F0-4979-8679-DD5284AF542E}
 		{54247374-518D-4930-9FE1-22CFF472F1ED} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
