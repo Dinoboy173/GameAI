@@ -19,8 +19,6 @@ std::string BuildSubString(int repeatNum, std::string repeatStr)
         {
             // maybe check if substring within first then process them differently to there being none
 
-            // need header folder to access stringBuilder
-            // feed substring into stringBuilder
         }
         else
         {

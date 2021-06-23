@@ -2,6 +2,8 @@
 
 #include "raymath.h"
 
+class Behaviour;
+
 class GameObject
 {
 public:
@@ -19,17 +21,23 @@ public:
 	const Vector2& GetAccelertion() const;
 	const float& GetFriction() const;
 
+	Behaviour* GetBehaviour();
+
 	// Setters
 	void SetPosition(const Vector2& pos);
 	void SetVelocity(const Vector2& vel);
 	void SetFriction(const float& fric);
 
+	void SetBehaviour(Behaviour* behaviour);
+
 protected:
 
-	Vector2 m_position;
-	Vector2 m_velocity;
-	Vector2 m_acceleration;
-	float m_friction;
+	Vector2 m_position = { 0.0f, 0.0f };
+	Vector2 m_velocity = { 0.0f, 0.0f };
+	Vector2 m_acceleration = { 0.0f, 0.0f };
+	float m_friction = 0.0f;
+
+	Behaviour* m_behaviour = nullptr;
 
 private:
 };

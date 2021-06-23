@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Behaviour.h"
 
 GameObject::GameObject()
 {
@@ -7,26 +8,34 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-
+	
 }
 
 void GameObject::Update(float deltaTime)
 {
-	// m_velocity += m_acceleration * deltaTime;
-	// m_position += m_velocity * deltaTime;
-	// m_acceleration = {0, 0};
+	if (m_behaviour != nullptr)
+		m_behaviour->Update(this, deltaTime);
 
-	// upto vid 3 18:59
+	ApplyForce(Vector2Scale(Vector2Negate(m_velocity), m_friction));
+
+	m_velocity = Vector2Add(m_velocity, Vector2Scale(m_acceleration, deltaTime));
+	m_position = Vector2Add(m_position, Vector2Scale(m_velocity, deltaTime));
+	m_acceleration = { 0, 0 };
 }
 
 void GameObject::Draw()
 {
+	if (m_behaviour != nullptr)
+		m_behaviour->Draw(this);
+
+	Vector2 heading = Vector2Add(m_position, m_velocity);
+
 	DrawCircle(m_position.x, m_position.y, 8, GRAY);
+	DrawLine(m_position.x, m_position.y, heading.x, heading.y, BLACK);
 }
 
 void GameObject::ApplyForce(const Vector2& force)
 {
-	// m_acceleration += force;
 	m_acceleration = Vector2Add(m_acceleration, force);
 }
 
@@ -47,6 +56,10 @@ const float& GameObject::GetFriction() const
 {
 	return m_friction;
 }
+Behaviour* GameObject::GetBehaviour()
+{
+	return m_behaviour;
+}
 
 // Setters
 void GameObject::SetPosition(const Vector2& pos)
@@ -60,4 +73,8 @@ void GameObject::SetVelocity(const Vector2& vel)
 void GameObject::SetFriction(const float& fric)
 {
 	m_friction = fric;
+}
+void GameObject::SetBehaviour(Behaviour* behaviour)
+{
+	m_behaviour = behaviour;
 }

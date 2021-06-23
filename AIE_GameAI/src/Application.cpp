@@ -1,5 +1,7 @@
 #include "Application.h"
 #include "GameObject.h"
+#include "Player.h"
+#include "KeyboardBehaviour.h"
 
 Application::Application(int windowWidth, int windowHeight, const char* windowTitle) :
 	m_windowWidth(windowWidth),
@@ -36,8 +38,9 @@ void Application::Run()
 
 void Application::Load()
 {
-	m_player = new GameObject();
+	m_player = new Player();
 	m_player->SetPosition({ m_windowWidth / 2.0f, m_windowHeight / 2.0f });
+	m_player->SetFriction(1.0f);
 }
 
 void Application::Unload()
@@ -48,8 +51,6 @@ void Application::Unload()
 
 void Application::Update(float deltaTime)
 {
-	// m_player->ApplyForce({ 10,0 });
-
 	m_player->Update(deltaTime);
 }
 
