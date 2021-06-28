@@ -176,6 +176,7 @@
     <ClCompile Include="src\SeekBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="inc\Application.h" />
     <ClInclude Include="inc\Behaviour.h" />
     <ClInclude Include="inc\FleeBehaviour.h" />

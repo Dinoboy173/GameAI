@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_GameAI", "AIE_GameAI\AI
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_02_BlackJack", "AIE_02_BlackJack\AIE_02_BlackJack.vcxproj", "{B2287A74-24E7-4671-9152-82643447FA60}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_03_MakeBox", "WarmUps\AIE_03_MakeBox\AIE_03_MakeBox.vcxproj", "{98A312B2-E0B3-4897-88AB-3057AE68B1F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -45,6 +47,14 @@ Global
 		{B2287A74-24E7-4671-9152-82643447FA60}.Release|x64.Build.0 = Release|x64
 		{B2287A74-24E7-4671-9152-82643447FA60}.Release|x86.ActiveCfg = Release|Win32
 		{B2287A74-24E7-4671-9152-82643447FA60}.Release|x86.Build.0 = Release|Win32
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Debug|x64.ActiveCfg = Debug|x64
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Debug|x64.Build.0 = Debug|x64
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Debug|x86.Build.0 = Debug|Win32
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Release|x64.ActiveCfg = Release|x64
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Release|x64.Build.0 = Release|x64
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Release|x86.ActiveCfg = Release|Win32
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +62,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{54247374-518D-4930-9FE1-22CFF472F1ED} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 		{B2287A74-24E7-4671-9152-82643447FA60} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
+		{98A312B2-E0B3-4897-88AB-3057AE68B1F9} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {783CED3C-6DF9-4BD2-AB06-767B26CAFC52}
