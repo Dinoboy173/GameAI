@@ -174,16 +174,18 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\SeekBehaviour.cpp" />
+    <ClCompile Include="src\WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Graph.h" />
     <ClInclude Include="inc\Application.h" />
     <ClInclude Include="inc\Behaviour.h" />
     <ClInclude Include="inc\FleeBehaviour.h" />
     <ClInclude Include="inc\GameObject.h" />
+    <ClInclude Include="inc\Graph.h" />
     <ClInclude Include="inc\KeyboardBehaviour.h" />
     <ClInclude Include="inc\Player.h" />
     <ClInclude Include="inc\SeekBehaviour.h" />
+    <ClInclude Include="inc\WanderBehaviour.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

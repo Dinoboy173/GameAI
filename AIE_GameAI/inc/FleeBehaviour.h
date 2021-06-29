@@ -2,7 +2,6 @@
 
 #include "Behaviour.h"
 #include "raymath.h"
-
 #include <functional>
 
 class FleeBehaviour : public Behaviour

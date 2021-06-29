@@ -19,13 +19,12 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 			m_onArrivedFn();
 
 	Vector2 heading = Vector2Add(obj->GetPosition(), obj->GetVelocity());
-	float headingLen = Vector2Length(heading);
 
-	Vector2 dirToTarget = Vector2Normalize(Vector2Subtract(m_target, obj->GetPosition()));
-	Vector2 vecToTarget = Vector2Scale(dirToTarget, headingLen);
+	Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(m_target, obj->GetPosition()));
+	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
+	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
+	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
 
-	Vector2 targetForcePos = Vector2Add(vecToTarget, obj->GetPosition());
-	Vector2 forceDir = Vector2Subtract(targetForcePos, heading);
 
 	obj->ApplyForce(forceDir);
 }

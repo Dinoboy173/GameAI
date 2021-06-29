@@ -17,8 +17,15 @@ void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 	if (distToTarget > m_targetRadius)
 		if (m_onExitedFn)
 			m_onExitedFn();
+	
+	Vector2 heading = Vector2Add(obj->GetPosition(), obj->GetVelocity());
 
-	// do rest of flee at home based on seek
+	Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(obj->GetPosition(), m_target));
+	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
+	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
+	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
+
+	obj->ApplyForce(forceDir);
 }
 
 void FleeBehaviour::Draw(GameObject* obj)

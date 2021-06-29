@@ -56,6 +56,14 @@ const float& GameObject::GetFriction() const
 {
 	return m_friction;
 }
+const float& GameObject::GetMaxSpeed() const
+{
+	return m_maxSpeed;
+}
+const float& GameObject::GetMaxForce() const
+{
+	return m_maxForce;
+}
 Behaviour* GameObject::GetBehaviour()
 {
 	return m_behaviour;
@@ -73,6 +81,14 @@ void GameObject::SetVelocity(const Vector2& vel)
 void GameObject::SetFriction(const float& fric)
 {
 	m_friction = fric;
+}
+void GameObject::SetMaxSpeed(const float& speed)
+{
+	m_maxSpeed = speed;
+}
+void GameObject::SetMaxForce(const float& force)
+{
+	m_maxForce = force;
 }
 void GameObject::SetBehaviour(Behaviour* behaviour)
 {
