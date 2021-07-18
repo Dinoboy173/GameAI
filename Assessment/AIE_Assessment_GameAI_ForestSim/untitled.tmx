@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="1">
+ <tileset firstgid="1" name="sprits" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="assets/sprits.png" width="96" height="128"/>
+ </tileset>
+ <layer id="1" name="grass" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAMA6H7Z/99u0dRcNVUVVXV1w98oCwB
+  </data>
+ </layer>
+ <layer id="2" name="trees" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzNVtEOxCAI81X//4PvZUuIobRFk52J2fSQQhn15hhjfjxHeMaR7am2ynoKdnFPsWVjbu9OjirujoHOMP4V3AxL9cP47/CLfKG1grGeqfpkcUTsjP/4vpLZjQPFgEaGvQp7hJE9I34WA8Le8VHe3fzfNcN3+K5iROdOuHf6kPEVsd3+7/afo2+d3xl+x9+N+jPtq3oJ2bA4TjUWYSk2qv6rPa325M7/SX1P+FPuf1XfGFeI1xv/adBQ6uVwr37TaixM/zo97Zx39M+pi6oLjH9V710fGT7z5Wh6te/kfyMe5tvRf7SPcsvsu/mf6gS6e6rYVT/Z+tb9p9ah853MP5g/AHUK5w==
+  </data>
+ </layer>
+ <layer id="4" name="bushes" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0jENAAAIBLEf8a+YARFA0iq44RIAgP9qO4CzvAEwGnHgABE=
+  </data>
+ </layer>
+ <layer id="3" name="rabbit holes" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlMEOwCAIQz162P9/r2eXhSArUIi9Skx5FMaooSm8PWEubPryLvWTLS9vqBlW48moN28rP6bd65ABjx7YuKD8oO6AJx+G/fjTX0R2LIwyuHbdI/RfV7u0bDV1Uk3VGXr4zry7p/1ovEbN9mZIFiJXTIwXjNUBaQ==
+  </data>
+ </layer>
+ <layer id="5" name="rabbit" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJACAMBEFf2n/HFiD6kGAMzFSwEMK1RoaRHXDwc9tOxWaAl3p2AGEiN89+1uBOsPIXdybgfwA4
+  </data>
+ </layer>
+ <layer id="6" name="fox" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6DP/qGNcecgAQkAwE/TDgDAIQseMAAD
+  </data>
+ </layer>
+</map>
