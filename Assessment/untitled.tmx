@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="1">
+ <tileset firstgid="1" name="sprits" tilewidth="32" tileheight="32" tilecount="12" columns="3">
+  <image source="sprits.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="13" name="colourMap" tilewidth="32" tileheight="32" tilecount="9" columns="3">
+  <image source="colourMapTile.png" width="96" height="96"/>
+ </tileset>
+ <layer id="1" name="grass" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztw8EJAAAMA6H7Z/99u0dRcNVUVVXV1w98oCwB
+  </data>
+ </layer>
+ <layer id="2" name="trees" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzNVtsOxSAI85X//+G9GkKlLS6bybIjQy4F6om1Vnz8rO29r0rG6jL7IPR2GaPbrUi/lRxZv9kHOtPhz/itfLF2OvwdfJEttFd9qH12kiH8nVo4venkr66cX9X/kxhQ3m7+ag8z504xvoG/ksOb8+/On8JvzvfOv2PvRv07DjjNEtLp4rjRf5PeYfif7VF2JjP+k/pOuYuJ0ZGzuN74T4MWUy8Fe7an2Vg6/nNmWjmv8J9SF5YXOvxZvldtVP47W+69nOVK/jfi6Wwr/I/kKLdK381/yhPo7jnFztqp9rfuP7YOTp/ED54HJRUJfw==
+  </data>
+ </layer>
+ <layer id="4" name="bushes" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt0jENAAAIBLEf8a+YARFA0iq44RIAgP9qO4CzvAEwGnHgABE=
+  </data>
+ </layer>
+ <layer id="3" name="rabbit holes" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztlMEOwCAIQz162P9/r2eXhSArUIi9Skx5FMaooSm8PWEubPryLvWTLS9vqBlW48moN28rP6bd65ABjx7YuKD8oO6AJx+G/fjTX0R2LIwyuHbdI/RfV7u0bDV1Uk3VGXr4zry7p/1ovEbN9mZIFiJXTIwXjNUBaQ==
+  </data>
+ </layer>
+ <layer id="11" name="water" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzSEOACAQBLHT/P/BGAQGFLkVtMnoqQJuxir53ku+u/6n9+//bsk3AADvTetRAWk=
+  </data>
+ </layer>
+ <layer id="5" name="rabbit" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJACAMBEFf2n/HFiD6kGAMzFSwEMK1RoaRHXDwc9tOxWaAl3p2AGEiN89+1uBOsPIXdybgfwA4
+  </data>
+ </layer>
+ <layer id="6" name="fox" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6DP/qGNcecgAQkAwE/TDgDAIQseMAAD
+  </data>
+ </layer>
+ <layer id="10" name="colourAMp" width="32" height="32">
+  <data encoding="base64" compression="zlib">
+   eJzFVkEOwzAI6weapt3//zpNWiSEjG1y6QFtywgG45CM4zjGy/YJn9Hi2izWf3aDNef3EH5PWlMxK0O5zwLfia1wB/he8Yv+nw3cjPUUe2PcAfBvkjvjk625GlD9u/7mxnR5q/gfADvabh7R7oSP+EPYF4jjaLGqs+pBhZ3xs26Z3pn+czyF3+G78kX4U+CrmhAeO8+Kr4jtnH+n7gnwO9plmp1kf55NC7/ix82H+bC7KdevZh87S5VP5lvpH/G5W7vyWfh34cfqRXMH6YvlwuYP2uPcMR1z7n+mHfSucN4qSH+Ks936nPpPM44zKxSfmbNO7C4um1NIe6wHLFZnP7p/O/1j57OrgTh/VSxXl8svz4ed+pcP0ifb58zMiO+8fXd6q3TK3h+dOJ2+ZGyWuxsH8ePOCvetsQz16iRx0Hp+/7xpX7uwRaI=
+  </data>
+ </layer>
+</map>

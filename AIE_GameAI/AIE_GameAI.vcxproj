@@ -168,24 +168,51 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\AssetManager.cpp" />
+    <ClCompile Include="src\BuildWorld.cpp" />
+    <ClCompile Include="src\Bush.cpp" />
     <ClCompile Include="src\FleeBehaviour.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\GameStateManager.cpp" />
     <ClCompile Include="src\KeyboardBehaviour.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MenuState.cpp" />
+    <ClCompile Include="src\PauseState.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PlayState.cpp" />
     <ClCompile Include="src\SeekBehaviour.cpp" />
+    <ClCompile Include="src\SplashState.cpp" />
     <ClCompile Include="src\WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Application.h" />
+    <ClInclude Include="inc\AssetManager.h" />
     <ClInclude Include="inc\Behaviour.h" />
+    <ClInclude Include="inc\BuildWord.h" />
+    <ClInclude Include="inc\Bush.h" />
     <ClInclude Include="inc\FleeBehaviour.h" />
     <ClInclude Include="inc\GameObject.h" />
+    <ClInclude Include="inc\GameStateManager.h" />
     <ClInclude Include="inc\Graph.h" />
+    <ClInclude Include="inc\IGameState.h" />
     <ClInclude Include="inc\KeyboardBehaviour.h" />
+    <ClInclude Include="inc\MenuState.h" />
+    <ClInclude Include="inc\PauseState.h" />
     <ClInclude Include="inc\Player.h" />
+    <ClInclude Include="inc\PlayState.h" />
     <ClInclude Include="inc\SeekBehaviour.h" />
+    <ClInclude Include="inc\SplashState.h" />
     <ClInclude Include="inc\WanderBehaviour.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\bush.png" />
+    <Image Include="assets\colourMap.png" />
+    <Image Include="assets\fox.png" />
+    <Image Include="assets\grass.png" />
+    <Image Include="assets\hole.png" />
+    <Image Include="assets\rabbit.png" />
+    <Image Include="assets\tree.png" />
+    <Image Include="assets\water.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

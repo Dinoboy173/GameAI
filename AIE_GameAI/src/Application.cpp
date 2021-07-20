@@ -1,8 +1,10 @@
 #include "Application.h"
-#include "GameObject.h"
-#include "Player.h"
-#include "KeyboardBehaviour.h"
-#include <Graph.h>
+#include "GameStateManager.h"
+#include "SplashState.h"
+#include "MenuState.h"
+#include "PlayState.h"
+#include "PauseState.h"
+#include "AssetManager.h"
 
 Application::Application(int windowWidth, int windowHeight, const char* windowTitle) :
 	m_windowWidth(windowWidth),
@@ -39,29 +41,29 @@ void Application::Run()
 
 void Application::Load()
 {
-	Graph<Vector2, float> myGraph;
-	
-	auto nodeA = myGraph.AddNode({ 100, 100 });
-	auto nodeB = myGraph.AddNode({ 200, 100 });
-	auto nodeC = myGraph.AddNode({ 200, 200 });
+	AssetManager::CreateSingleton();
+	AssetManager::GetInstance()->LoadAssets();
 
-	myGraph.AddEdge(nodeA, nodeB, 100);
-	myGraph.AddEdge(nodeB, nodeA, 100);
+	m_gameStateManager = new GameStateManager();
+	m_gameStateManager->SetState("Splash", new SplashState(this));
+	m_gameStateManager->SetState("Menu", new MenuState(this));
+	m_gameStateManager->SetState("Play", new PlayState(this));
+	m_gameStateManager->SetState("Pause", new PauseState(this));
 
-	m_player = new Player();
-	m_player->SetPosition({ m_windowWidth / 2.0f, m_windowHeight / 2.0f });
-	m_player->SetFriction(1.0f);
+	m_gameStateManager->PushState("Splash");
 }
 
 void Application::Unload()
 {
-	delete m_player;
-	m_player = nullptr;
+	AssetManager::GetInstance()->UnloadAssets();
+	AssetManager::DestroySingleton();
+
+	delete m_gameStateManager;
 }
 
 void Application::Update(float deltaTime)
 {
-	m_player->Update(deltaTime);
+	m_gameStateManager->Update(deltaTime);
 }
 
 void Application::Draw()
@@ -69,7 +71,12 @@ void Application::Draw()
 	BeginDrawing();
 	ClearBackground(RAYWHITE);
 
-	m_player->Draw();
+	m_gameStateManager->Draw();
 
 	EndDrawing();
+}
+
+GameStateManager* Application::GetGameStateManager()
+{
+	return m_gameStateManager;
 }

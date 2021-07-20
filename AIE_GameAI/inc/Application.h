@@ -1,8 +1,9 @@
 #pragma once
 #include "raylib.h"
 
-//Forward Declare
+//Predeclare classes
 class GameObject;
+class GameStateManager;
 
 class Application
 {
@@ -17,12 +18,16 @@ public:
 	void Update(float deltaTime);
 	void Draw();
 
+	GameStateManager* GetGameStateManager();
+
 protected:
 private:
 
 	int m_windowWidth;
 	int m_windowHeight;
 	const char* m_windowTitle;
+
+	GameStateManager* m_gameStateManager = nullptr;
 
 	GameObject* m_player = nullptr;
 };

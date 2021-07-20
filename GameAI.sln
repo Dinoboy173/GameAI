@@ -19,8 +19,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_02_BlackJack", "WarmUps
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_05_TransposeMatrix", "WarmUps\AIE_05_TransposeMatrix\AIE_05_TransposeMatrix.vcxproj", "{65EA4539-3938-46E5-A4B6-A8B5665226B2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assessment", "Assessment", "{80555D22-0D06-40C8-9D2F-0207D1CC4EAA}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Raylib", "Raylib\Bindings\Raylib.shproj", "{F660FF67-D70E-4AE0-9080-D922243E9B6E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_07_CupSwap", "WarmUps\AIE_07_CupSwap\AIE_07_CupSwap.vcxproj", "{A6A094F3-DB93-4204-B269-E3E45FF647C0}"
@@ -28,6 +26,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_06_LargestProduct", "WarmUps\AIE_06_LargestProduct\AIE_06_LargestProduct.vcxproj", "{457A79EC-6EEA-4C8A-AC8A-110C7796BFE5}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_08_BasicEmailValidation", "WarmUps\AIE_08_BasicEmailValidation\AIE_08_BasicEmailValidation.vcxproj", "{DF2CBB52-6673-42F9-B35F-DDE76BF275BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIE_09_CarFactory", "WarmUps\AIE_09_CarFactory\AIE_09_CarFactory.vcxproj", "{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -112,6 +112,14 @@ Global
 		{DF2CBB52-6673-42F9-B35F-DDE76BF275BF}.Release|x64.Build.0 = Release|x64
 		{DF2CBB52-6673-42F9-B35F-DDE76BF275BF}.Release|x86.ActiveCfg = Release|Win32
 		{DF2CBB52-6673-42F9-B35F-DDE76BF275BF}.Release|x86.Build.0 = Release|Win32
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Debug|x64.ActiveCfg = Debug|x64
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Debug|x64.Build.0 = Debug|x64
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Debug|x86.ActiveCfg = Debug|Win32
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Debug|x86.Build.0 = Debug|Win32
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Release|x64.ActiveCfg = Release|x64
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Release|x64.Build.0 = Release|x64
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Release|x86.ActiveCfg = Release|Win32
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +134,7 @@ Global
 		{A6A094F3-DB93-4204-B269-E3E45FF647C0} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 		{457A79EC-6EEA-4C8A-AC8A-110C7796BFE5} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 		{DF2CBB52-6673-42F9-B35F-DDE76BF275BF} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
+		{C9B264E7-22E2-495A-9A55-8490AC0E3FD5} = {92C018F2-BCAF-40DD-BB98-090E9538C650}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {783CED3C-6DF9-4BD2-AB06-767B26CAFC52}

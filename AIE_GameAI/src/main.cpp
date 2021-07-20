@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     srand(time(NULL));
 
     {
-        Application app(800, 450, "GameAI");
+        Application app(1024, 1024,  "GameAI");
         app.Run();
     }
 

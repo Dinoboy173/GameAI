@@ -23,8 +23,7 @@ public:
 
 	const float& GetMaxSpeed() const;
 	const float& GetMaxForce() const;
-		
-
+	
 	Behaviour* GetBehaviour();
 
 	// Setters
@@ -32,7 +31,6 @@ public:
 	void SetVelocity(const Vector2& vel);
 	void SetFriction(const float& fric);
 
-	
 	void SetMaxSpeed(const float& speed);
 	void SetMaxForce(const float& force);
 
