@@ -2,15 +2,8 @@
 
 #include "raylib.h"
 #include "AssetManager.h"
-#include "Bush.h"
-#include <vector>
-#include <map>
 
-struct Pos
-{
-	float x;
-	float y;
-};
+class Bush;
 
 class BuildWorld
 {
@@ -30,8 +23,6 @@ public:
 protected:
 private:
 
-	
-
-	Bush m_bush;
+	Bush* m_bush;
 
 };
