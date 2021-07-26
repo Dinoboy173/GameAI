@@ -167,40 +167,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\AssetManager.cpp" />
-    <ClCompile Include="src\BuildWorld.cpp" />
-    <ClCompile Include="src\FleeBehaviour.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
-    <ClCompile Include="src\GameStateManager.cpp" />
-    <ClCompile Include="src\KeyboardBehaviour.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MenuState.cpp" />
-    <ClCompile Include="src\PauseState.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\PlayState.cpp" />
-    <ClCompile Include="src\SeekBehaviour.cpp" />
-    <ClCompile Include="src\SplashState.cpp" />
-    <ClCompile Include="src\WanderBehaviour.cpp" />
+    <ClCompile Include="src\Menu\Application.cpp" />
+    <ClCompile Include="src\Game\AssetManager.cpp" />
+    <ClCompile Include="src\Game\BuildWorld.cpp" />
+    <ClCompile Include="src\Demo1\Demo1.cpp" />
+    <ClCompile Include="src\Demo1\Demo1FleeBehaviour.cpp" />
+    <ClCompile Include="src\Game\GameObject.cpp" />
+    <ClCompile Include="src\Menu\GameStateManager.cpp" />
+    <ClCompile Include="src\Demo1\Demo1KeyboardBehaviour.cpp" />
+    <ClCompile Include="src\Menu\main.cpp" />
+    <ClCompile Include="src\Menu\MenuState.cpp" />
+    <ClCompile Include="src\Game\PauseState.cpp" />
+    <ClCompile Include="src\Demo1\Demo1Player.cpp" />
+    <ClCompile Include="src\Game\PlayState.cpp" />
+    <ClCompile Include="src\Game\Rabbit.cpp" />
+    <ClCompile Include="src\Demo1\Demo1SeekBehaviour.cpp" />
+    <ClCompile Include="src\Menu\SplashState.cpp" />
+    <ClCompile Include="src\Demo1\Demo1WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\Application.h" />
-    <ClInclude Include="inc\AssetManager.h" />
-    <ClInclude Include="inc\Behaviour.h" />
-    <ClInclude Include="inc\BuildWord.h" />
-    <ClInclude Include="inc\FleeBehaviour.h" />
-    <ClInclude Include="inc\GameObject.h" />
-    <ClInclude Include="inc\GameStateManager.h" />
+    <ClInclude Include="inc\Menu\Application.h" />
+    <ClInclude Include="inc\Game\AssetManager.h" />
+    <ClInclude Include="inc\Demo1\Demo1Behaviour.h" />
+    <ClInclude Include="inc\Game\BuildWord.h" />
+    <ClInclude Include="inc\Demo1\Demo1.h" />
+    <ClInclude Include="inc\Demo1\Demo1FleeBehaviour.h" />
+    <ClInclude Include="inc\Game\GameObject.h" />
+    <ClInclude Include="inc\Menu\GameStateManager.h" />
     <ClInclude Include="inc\Graph.h" />
-    <ClInclude Include="inc\IGameState.h" />
-    <ClInclude Include="inc\KeyboardBehaviour.h" />
-    <ClInclude Include="inc\MenuState.h" />
-    <ClInclude Include="inc\PauseState.h" />
-    <ClInclude Include="inc\Player.h" />
-    <ClInclude Include="inc\PlayState.h" />
-    <ClInclude Include="inc\SeekBehaviour.h" />
-    <ClInclude Include="inc\SplashState.h" />
-    <ClInclude Include="inc\WanderBehaviour.h" />
+    <ClInclude Include="inc\Menu\IGameState.h" />
+    <ClInclude Include="inc\Demo1\Demo1KeyboardBehaviour.h" />
+    <ClInclude Include="inc\Menu\MenuState.h" />
+    <ClInclude Include="inc\Game\PauseState.h" />
+    <ClInclude Include="inc\Demo1\Demo1Player.h" />
+    <ClInclude Include="inc\Game\PlayState.h" />
+    <ClInclude Include="inc\Game\Rabbit.h" />
+    <ClInclude Include="inc\Demo1\Demo1SeekBehaviour.h" />
+    <ClInclude Include="inc\Menu\SplashState.h" />
+    <ClInclude Include="inc\Demo1\Demo1WanderBehaviour.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\bush.png" />
