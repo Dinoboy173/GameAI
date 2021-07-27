@@ -2,16 +2,16 @@
 
 #include "./Demo1/Demo1Behaviour.h"
 
-class KeyboardBehaviour : public Behaviour
+class Demo1KeyboardBehaviour : public Demo1Behaviour
 {
 public:
 
-	KeyboardBehaviour();
-	KeyboardBehaviour(int upKey, int downKey, int leftKey, int rightKey, float moveForce);
-	virtual ~KeyboardBehaviour();
+	Demo1KeyboardBehaviour();
+	Demo1KeyboardBehaviour(int upKey, int downKey, int leftKey, int rightKey, float moveForce);
+	virtual ~Demo1KeyboardBehaviour();
 
-	virtual void Update(GameObject* obj, float deltaTime);
-	virtual void Draw(GameObject* obj);
+	virtual void Update(Demo1GameObject* obj, float deltaTime);
+	virtual void Draw(Demo1GameObject* obj);
 
 protected:
 

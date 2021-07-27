@@ -3,7 +3,7 @@
 #include "./Menu/GameStateManager.h"
 #include "./Game/AssetManager.h"
 #include "./Game/BuildWord.h"
-#include <Graph.h>
+#include <./Demo2/Demo2Graph.h>
 #include <iostream>
 
 PlayState::PlayState(Application* app) : m_app(app)

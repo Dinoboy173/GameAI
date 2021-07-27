@@ -1,28 +1,28 @@
 #pragma once
 
-#include "./Game/GameObject.h"
+#include "./Demo1/Demo1GameObject.h"
 
-class KeyboardBehaviour;
-class SeekBehaviour;
-class FleeBehaviour;
-class WanderBehaviour;
+class Demo1KeyboardBehaviour;
+class Demo1SeekBehaviour;
+class Demo1FleeBehaviour;
+class Demo1WanderBehaviour;
 
-class Player : public GameObject
+class Demo1Player : public Demo1GameObject
 {
 public:
 
-	Player();
-	virtual ~Player();
+	Demo1Player();
+	virtual ~Demo1Player();
 
 	virtual void Update(float deltaTime);
 	virtual void Draw();
 
 protected:
 
-	KeyboardBehaviour* m_kbBehaviour;
-	SeekBehaviour* m_seekBehaviour;
-	FleeBehaviour* m_fleeBehaviour;
-	WanderBehaviour* m_wanderBehaviour;
+	Demo1KeyboardBehaviour* m_kbBehaviour;
+	Demo1SeekBehaviour* m_seekBehaviour;
+	Demo1FleeBehaviour* m_fleeBehaviour;
+	Demo1WanderBehaviour* m_wanderBehaviour;
 
 private:
 };

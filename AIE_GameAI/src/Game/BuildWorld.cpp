@@ -3,7 +3,7 @@
 #include "./Game/GameObject.h"
 #include "raylib.h"
 #include <iostream>
-#include <Graph.h>
+#include <./Demo2/Demo2Graph.h>
 
 BuildWorld::BuildWorld()
 {
@@ -36,8 +36,6 @@ void BuildWorld::Draw()
 	int numCols = ASSETS->imgGameMapInfo.width;
 
 	int tileSize = 32;
-
-	// Raylib color is backwards (a,b,g,r)
 
 	for (int y = 0; y < numRows; y++)
 	{

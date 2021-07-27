@@ -4,14 +4,14 @@
 #include "./Demo1/Demo1FleeBehaviour.h"
 #include "./Demo1/Demo1WanderBehaviour.h"
 
-Player::Player()
+Demo1Player::Demo1Player()
 {
 	// Keyboard
-	m_kbBehaviour = new KeyboardBehaviour();
+	m_kbBehaviour = new Demo1KeyboardBehaviour();
 	SetBehaviour(m_kbBehaviour);
 
 	// Seek
-	m_seekBehaviour = new SeekBehaviour();
+	m_seekBehaviour = new Demo1SeekBehaviour();
 	m_seekBehaviour->SetTargetRadius(25.0f);
 	m_seekBehaviour->OnArrive([this]()
 	{
@@ -19,7 +19,7 @@ Player::Player()
 	});
 
 	// Flee
-	m_fleeBehaviour = new FleeBehaviour();
+	m_fleeBehaviour = new Demo1FleeBehaviour();
 	m_fleeBehaviour->SetTargetRadius(75.0f);
 	m_fleeBehaviour->OnExit([this]()
 	{
@@ -27,11 +27,11 @@ Player::Player()
 	});
 
 	// Wander
-	m_wanderBehaviour = new WanderBehaviour();
+	m_wanderBehaviour = new Demo1WanderBehaviour();
 	m_wanderBehaviour->SetTargetRadius(50.0f);
 }
 
-Player::~Player()
+Demo1Player::~Demo1Player()
 {
 	SetBehaviour(nullptr);
 
@@ -41,7 +41,7 @@ Player::~Player()
 	delete m_kbBehaviour;
 }
 
-void Player::Update(float deltaTime)
+void Demo1Player::Update(float deltaTime)
 {
 	if (IsMouseButtonPressed(0))
 	{
@@ -65,10 +65,10 @@ void Player::Update(float deltaTime)
 		SetBehaviour(m_wanderBehaviour);
 	}
 
-	GameObject::Update(deltaTime);
+	Demo1GameObject::Update(deltaTime);
 }
 
-void Player::Draw()
+void Demo1Player::Draw()
 {
-	GameObject::Draw();
+	Demo1GameObject::Draw();
 }

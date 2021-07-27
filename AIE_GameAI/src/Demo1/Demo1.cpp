@@ -3,7 +3,7 @@
 #include "./Menu/GameStateManager.h"
 #include "./Demo1/Demo1Player.h"
 #include "./Demo1/Demo1KeyboardBehaviour.h"
-#include "./Game/GameObject.h"
+#include "./Demo1/Demo1GameObject.h"
 #include "raylib.h"
 
 #include <iostream>
@@ -22,7 +22,7 @@ void Demo1::Load()
 {
 	std::cout << "Loading Demo1\n";
 
-	m_player = new Player();
+	m_player = new Demo1Player();
 	m_player->SetPosition({ 500, 500 });
 	m_player->SetFriction(1.0f);
 }

@@ -1,16 +1,16 @@
 #pragma once
 
-class GameObject;
+class Demo1GameObject;
 
-class Behaviour
+class Demo1Behaviour
 {
 public:
 
-	Behaviour() {}
-	virtual ~Behaviour() {}
+	Demo1Behaviour() {}
+	virtual ~Demo1Behaviour() {}
 
-	virtual void Update(GameObject* obj, float deltaTime) {}
-	virtual void Draw(GameObject* obj) {}
+	virtual void Update(Demo1GameObject* obj, float deltaTime) {}
+	virtual void Draw(Demo1GameObject* obj) {}
 
 protected:
 private:

@@ -2,7 +2,7 @@
 
 #include "./Menu/IGameState.h"
 #include "raylib.h"
-#include <Graph.h>
+#include <./Demo2/Demo2Graph.h>
 
 class Application;
 class BuildWorld;

@@ -5,15 +5,15 @@
 
 #include <functional>
 
-class SeekBehaviour : public Behaviour
+class Demo1SeekBehaviour : public Demo1Behaviour
 {
 public:
 
-	SeekBehaviour();
-	virtual ~SeekBehaviour();
+	Demo1SeekBehaviour();
+	virtual ~Demo1SeekBehaviour();
 
-	virtual void Update(GameObject* obj, float deltaTime);
-	virtual void Draw(GameObject* obj);
+	virtual void Update(Demo1GameObject* obj, float deltaTime);
+	virtual void Draw(Demo1GameObject* obj);
 
 	const Vector2& GetTarget() const;
 	void SetTarget(const Vector2& target);

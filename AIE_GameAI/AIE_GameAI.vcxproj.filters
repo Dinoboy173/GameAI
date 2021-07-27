@@ -39,9 +39,6 @@
     <ClCompile Include="src\Game\BuildWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\PauseState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,11 +63,26 @@
     <ClCompile Include="src\Menu\MenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Demo2\Demo2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo2\Demo2SeekBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo2\Demo2Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo2\Demo2KeyboardBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo1\Demo1GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo2\Demo2GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Demo1\Demo1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -98,9 +110,6 @@
     <ClInclude Include="inc\Game\PauseState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Game\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Game\BuildWord.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,6 +132,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Menu\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2SeekBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2KeyboardBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2Behaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo2\Demo2GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo1\Demo1GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

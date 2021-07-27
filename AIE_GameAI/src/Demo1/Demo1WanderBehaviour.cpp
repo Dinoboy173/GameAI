@@ -1,16 +1,16 @@
 #include "./Demo1/Demo1WanderBehaviour.h"
-#include "./Game/GameObject.h"
+#include "./Demo1/Demo1GameObject.h"
 
-WanderBehaviour::WanderBehaviour() : Behaviour()
+Demo1WanderBehaviour::Demo1WanderBehaviour() : Demo1Behaviour()
 {
 	
 }
-WanderBehaviour::~WanderBehaviour()
+Demo1WanderBehaviour::~Demo1WanderBehaviour()
 {
 
 }
 
-void WanderBehaviour::Update(GameObject* obj, float deltaTime)
+void Demo1WanderBehaviour::Update(Demo1GameObject* obj, float deltaTime)
 {
 	float distToWp = Vector2Length(Vector2Subtract(m_wanderPoint, obj->GetPosition()));
 
@@ -42,28 +42,28 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 	obj->ApplyForce(wanderTotalDistance);
 }
 
-void WanderBehaviour::Draw(GameObject* obj)
+void Demo1WanderBehaviour::Draw(Demo1GameObject* obj)
 {
 	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
 	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
 }
 
-const Vector2& WanderBehaviour::GetTarget() const
+const Vector2& Demo1WanderBehaviour::GetTarget() const
 {
 	return m_target;
 }
 
-void WanderBehaviour::SetTarget(const Vector2& target)
+void Demo1WanderBehaviour::SetTarget(const Vector2& target)
 {
 	m_target = target;
 }
 
-const float& WanderBehaviour::GetTargetRadius() const
+const float& Demo1WanderBehaviour::GetTargetRadius() const
 {
 	return m_targetRadius;
 }
 
-void WanderBehaviour::SetTargetRadius(const float& radius)
+void Demo1WanderBehaviour::SetTargetRadius(const float& radius)
 {
 	m_targetRadius = radius;
 }

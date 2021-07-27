@@ -167,12 +167,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Demo2\Demo2GameObject.cpp" />
+    <ClCompile Include="src\Demo2\Demo2.cpp" />
+    <ClCompile Include="src\Demo2\Demo2KeyboardBehaviour.cpp" />
+    <ClCompile Include="src\Demo2\Demo2Player.cpp" />
+    <ClCompile Include="src\Demo2\Demo2SeekBehaviour.cpp" />
     <ClCompile Include="src\Menu\Application.cpp" />
     <ClCompile Include="src\Game\AssetManager.cpp" />
     <ClCompile Include="src\Game\BuildWorld.cpp" />
     <ClCompile Include="src\Demo1\Demo1.cpp" />
     <ClCompile Include="src\Demo1\Demo1FleeBehaviour.cpp" />
-    <ClCompile Include="src\Game\GameObject.cpp" />
+    <ClCompile Include="src\Demo1\Demo1GameObject.cpp" />
     <ClCompile Include="src\Menu\GameStateManager.cpp" />
     <ClCompile Include="src\Demo1\Demo1KeyboardBehaviour.cpp" />
     <ClCompile Include="src\Menu\main.cpp" />
@@ -186,15 +191,21 @@
     <ClCompile Include="src\Demo1\Demo1WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\Demo1\Demo1GameObject.h" />
+    <ClInclude Include="inc\Demo2\Demo2.h" />
+    <ClInclude Include="inc\Demo2\Demo2Behaviour.h" />
+    <ClInclude Include="inc\Demo2\Demo2KeyboardBehaviour.h" />
+    <ClInclude Include="inc\Demo2\Demo2Player.h" />
+    <ClInclude Include="inc\Demo2\Demo2SeekBehaviour.h" />
+    <ClInclude Include="inc\Demo2\Demo2GameObject.h" />
     <ClInclude Include="inc\Menu\Application.h" />
     <ClInclude Include="inc\Game\AssetManager.h" />
     <ClInclude Include="inc\Demo1\Demo1Behaviour.h" />
     <ClInclude Include="inc\Game\BuildWord.h" />
     <ClInclude Include="inc\Demo1\Demo1.h" />
     <ClInclude Include="inc\Demo1\Demo1FleeBehaviour.h" />
-    <ClInclude Include="inc\Game\GameObject.h" />
     <ClInclude Include="inc\Menu\GameStateManager.h" />
-    <ClInclude Include="inc\Graph.h" />
+    <ClInclude Include="inc\Demo2\Demo2Graph.h" />
     <ClInclude Include="inc\Menu\IGameState.h" />
     <ClInclude Include="inc\Demo1\Demo1KeyboardBehaviour.h" />
     <ClInclude Include="inc\Menu\MenuState.h" />

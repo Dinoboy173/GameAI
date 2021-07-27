@@ -6,6 +6,7 @@
 #include "./Game/PauseState.h"
 #include "./Game/AssetManager.h"
 #include "./Demo1/Demo1.h"
+#include "./Demo2/Demo2.h"
 
 Application::Application(int windowWidth, int windowHeight, const char* windowTitle) :
 	m_windowWidth(windowWidth),
@@ -51,6 +52,7 @@ void Application::Load()
 	m_gameStateManager->SetState("Play", new PlayState(this));
 	m_gameStateManager->SetState("Pause", new PauseState(this));
 	m_gameStateManager->SetState("Demo1", new Demo1(this));
+	m_gameStateManager->SetState("Demo2", new Demo2(this));
 
 	m_gameStateManager->PushState("Splash");
 }

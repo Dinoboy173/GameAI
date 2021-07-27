@@ -5,7 +5,7 @@
 #include <iostream>
 #include <random>
 #include <time.h>
-#include <Graph.h>
+#include <./Demo2/Demo2Graph.h>
 
 int main(int argc, char** argv)
 {

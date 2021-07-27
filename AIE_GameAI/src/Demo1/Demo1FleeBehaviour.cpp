@@ -1,17 +1,17 @@
 #include "./Demo1/Demo1FleeBehaviour.h"
-#include "./Game/GameObject.h"
+#include "./Demo1/Demo1GameObject.h"
 
-FleeBehaviour::FleeBehaviour() : Behaviour()
+Demo1FleeBehaviour::Demo1FleeBehaviour() : Demo1Behaviour()
 {
 
 }
 
-FleeBehaviour::~FleeBehaviour()
+Demo1FleeBehaviour::~Demo1FleeBehaviour()
 {
 
 }
 
-void FleeBehaviour::Update(GameObject* obj, float deltaTime)
+void Demo1FleeBehaviour::Update(Demo1GameObject* obj, float deltaTime)
 {
 	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
 	if (distToTarget > m_targetRadius)
@@ -28,33 +28,33 @@ void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 	obj->ApplyForce(forceDir);
 }
 
-void FleeBehaviour::Draw(GameObject* obj)
+void Demo1FleeBehaviour::Draw(Demo1GameObject* obj)
 {
 	DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
 	DrawCircle(m_target.x, m_target.y, 4, GRAY);
 }
 
-const Vector2& FleeBehaviour::GetTarget() const
+const Vector2& Demo1FleeBehaviour::GetTarget() const
 {
 	return m_target;
 }
 
-void FleeBehaviour::SetTarget(const Vector2& target)
+void Demo1FleeBehaviour::SetTarget(const Vector2& target)
 {
 	m_target = target;
 }
 
-const float& FleeBehaviour::GetTargetRadius() const
+const float& Demo1FleeBehaviour::GetTargetRadius() const
 {
 	return m_targetRadius;
 }
 
-void FleeBehaviour::SetTargetRadius(const float& radius)
+void Demo1FleeBehaviour::SetTargetRadius(const float& radius)
 {
 	m_targetRadius = radius;
 }
 
-void FleeBehaviour::OnExit(std::function<void()> callback)
+void Demo1FleeBehaviour::OnExit(std::function<void()> callback)
 {
 	m_onExitedFn = callback;
 }
