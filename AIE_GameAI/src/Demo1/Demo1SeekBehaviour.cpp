@@ -1,7 +1,7 @@
 #include "./Demo1/Demo1SeekBehaviour.h"
-#include "./Demo1/Demo1GameObject.h"
+#include "./Game/GameObject.h"
 
-Demo1SeekBehaviour::Demo1SeekBehaviour() : Demo1Behaviour()
+Demo1SeekBehaviour::Demo1SeekBehaviour() : Behaviour()
 {
 
 }
@@ -11,7 +11,7 @@ Demo1SeekBehaviour::~Demo1SeekBehaviour()
 	
 }
 
-void Demo1SeekBehaviour::Update(Demo1GameObject* obj, float deltaTime)
+void Demo1SeekBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
 	if (distToTarget < m_targetRadius)
@@ -29,7 +29,7 @@ void Demo1SeekBehaviour::Update(Demo1GameObject* obj, float deltaTime)
 	obj->ApplyForce(forceDir);
 }
 
-void Demo1SeekBehaviour::Draw(Demo1GameObject* obj)
+void Demo1SeekBehaviour::Draw(GameObject* obj)
 {
 	DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
 	DrawCircle(m_target.x, m_target.y, 4, GRAY);

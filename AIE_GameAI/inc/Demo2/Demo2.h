@@ -1,8 +1,11 @@
 #pragma once
 
 #include "./Menu/IGameState.h"
+#include "./Demo2/Demo2Graph2DEditor.h"
 
 class Application;
+class Graph2D;
+class Demo2Graph2DEditor;
 
 class Demo2 : public IGameState
 {
@@ -21,5 +24,7 @@ protected:
 private:
 
 	Application* m_app;
+
+	Graph2D* m_graph = nullptr;
 
 };

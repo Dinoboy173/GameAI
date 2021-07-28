@@ -1,6 +1,11 @@
 #pragma once
 
-class Rabbit
+#include "./Game/GameObject.h"
+#include "./Game/BuildWord.h"
+
+class WanderBehaviour;
+
+class Rabbit : public GameObject, public BuildWorld
 {
 public:
 
@@ -12,7 +17,7 @@ public:
 
 protected:
 
-	
+	WanderBehaviour* m_wanderBehaviour;
 
 private:
 };

@@ -1,18 +1,18 @@
 #pragma once
 
-#include "./Demo1/Demo1Behaviour.h"
+#include "./Game/Behaviour/Behaviour.h"
 #include "raymath.h"
 #include <functional>
 
-class Demo1FleeBehaviour : public Demo1Behaviour
+class Demo1FleeBehaviour : public Behaviour
 {
 public:
 
 	Demo1FleeBehaviour();
 	virtual ~Demo1FleeBehaviour();
 
-	virtual void Update(Demo1GameObject* obj, float deltaTime);
-	virtual void Draw(Demo1GameObject* obj);
+	virtual void Update(GameObject* obj, float deltaTime);
+	virtual void Draw(GameObject* obj);
 
 	const Vector2& GetTarget() const;
 	void SetTarget(const Vector2& target);

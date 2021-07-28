@@ -27,7 +27,7 @@ private:
 	int m_windowHeight;
 	const char* m_windowTitle;
 
-	GameStateManager* m_gameStateManager = nullptr;
-
 	GameObject* m_player = nullptr;
+
+	GameStateManager* m_gameStateManager = nullptr;
 };

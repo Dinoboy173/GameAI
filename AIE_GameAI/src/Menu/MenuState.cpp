@@ -29,19 +29,16 @@ void MenuState::Update(float dt)
 {
 	if (IsKeyPressed(KeyboardKey(KEY_ONE)))
 	{
-		m_app->GetGameStateManager()->SetState("Menu", nullptr);
 		m_app->GetGameStateManager()->PopState();
 		m_app->GetGameStateManager()->PushState("Demo1");
 	}
 	else if (IsKeyPressed(KeyboardKey(KEY_TWO)))
 	{
-		m_app->GetGameStateManager()->SetState("Menu", nullptr);
 		m_app->GetGameStateManager()->PopState();
 		m_app->GetGameStateManager()->PushState("Demo2");
 	}
 	else if (IsKeyPressed(KeyboardKey(KEY_THREE)))
 	{
-		m_app->GetGameStateManager()->SetState("Menu", nullptr);
 		m_app->GetGameStateManager()->PopState();
 		m_app->GetGameStateManager()->PushState("Play");
 	}

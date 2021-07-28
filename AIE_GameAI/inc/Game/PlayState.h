@@ -2,7 +2,6 @@
 
 #include "./Menu/IGameState.h"
 #include "raylib.h"
-#include <./Demo2/Demo2Graph.h>
 
 class Application;
 class BuildWorld;
@@ -24,6 +23,6 @@ protected:
 private:
 
 	Application* m_app;
-	BuildWorld* m_world;
+	BuildWorld* m_world = nullptr;
 
 };

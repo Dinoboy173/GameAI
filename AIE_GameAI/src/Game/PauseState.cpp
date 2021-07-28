@@ -31,6 +31,12 @@ void PauseState::Update(float dt)
 	{
 		m_app->GetGameStateManager()->PopState();
 	}
+	else if (IsKeyPressed(KeyboardKey(KEY_BACKSPACE)))
+	{
+		m_app->GetGameStateManager()->PopState();
+		m_app->GetGameStateManager()->PopState();
+		m_app->GetGameStateManager()->PushState("Menu");
+	}
 }
 
 void PauseState::Draw()

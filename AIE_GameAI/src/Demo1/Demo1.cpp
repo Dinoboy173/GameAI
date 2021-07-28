@@ -3,7 +3,7 @@
 #include "./Menu/GameStateManager.h"
 #include "./Demo1/Demo1Player.h"
 #include "./Demo1/Demo1KeyboardBehaviour.h"
-#include "./Demo1/Demo1GameObject.h"
+#include "./Game/GameObject.h"
 #include "raylib.h"
 
 #include <iostream>
@@ -37,6 +37,12 @@ void Demo1::Unload()
 
 void Demo1::Update(float dt)
 {
+	if (IsKeyPressed(KeyboardKey(KEY_BACKSPACE)))
+	{
+		m_app->GetGameStateManager()->PopState();
+		m_app->GetGameStateManager()->PushState("Menu");
+	}
+
 	m_player->Update(dt);
 }
 

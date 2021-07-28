@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Demo1\Demo1WanderBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Demo1\Demo1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -25,9 +22,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Demo1\Demo1KeyboardBehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Demo1\Demo1SeekBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Demo1\Demo1Player.cpp">
@@ -75,10 +69,22 @@
     <ClCompile Include="src\Demo2\Demo2KeyboardBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Demo1\Demo1GameObject.cpp">
+    <ClCompile Include="src\Demo2\Demo2GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Demo2\Demo2GameObject.cpp">
+    <ClCompile Include="src\Demo2\Demo2Graph2DEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Graph2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo1\Demo1SeekBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Behaviour\WanderBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,9 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Demo1\Demo1SeekBehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Demo1\Demo1WanderBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Demo1\Demo1Player.h">
@@ -114,9 +117,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Game\AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Demo1\Demo1Behaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Menu\SplashState.h">
@@ -149,13 +149,25 @@
     <ClInclude Include="inc\Demo2\Demo2Behaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Demo2\Demo2Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="inc\Demo2\Demo2GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Demo1\Demo1GameObject.h">
+    <ClInclude Include="inc\Demo2\Demo2Graph2DEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\Graph2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\Behaviour\Behaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\Behaviour\WanderBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

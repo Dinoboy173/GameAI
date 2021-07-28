@@ -3,7 +3,7 @@
 #include "./Menu/IGameState.h"
 
 class Application;
-class Demo1GameObject;
+class GameObject;
 
 class Demo1 : public IGameState
 {
@@ -23,6 +23,6 @@ private:
 
 	Application* m_app;
 
-	Demo1GameObject* m_player = nullptr;
+	GameObject* m_player = nullptr;
 
 };

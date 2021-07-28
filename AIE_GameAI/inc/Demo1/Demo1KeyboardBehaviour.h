@@ -1,8 +1,8 @@
 #pragma once
 
-#include "./Demo1/Demo1Behaviour.h"
+#include "./Game/Behaviour/Behaviour.h"
 
-class Demo1KeyboardBehaviour : public Demo1Behaviour
+class Demo1KeyboardBehaviour : public Behaviour
 {
 public:
 
@@ -10,8 +10,8 @@ public:
 	Demo1KeyboardBehaviour(int upKey, int downKey, int leftKey, int rightKey, float moveForce);
 	virtual ~Demo1KeyboardBehaviour();
 
-	virtual void Update(Demo1GameObject* obj, float deltaTime);
-	virtual void Draw(Demo1GameObject* obj);
+	virtual void Update(GameObject* obj, float deltaTime);
+	virtual void Draw(GameObject* obj);
 
 protected:
 

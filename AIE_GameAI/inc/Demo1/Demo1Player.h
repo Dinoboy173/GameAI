@@ -1,13 +1,13 @@
 #pragma once
 
-#include "./Demo1/Demo1GameObject.h"
+#include "./Game/GameObject.h"
 
 class Demo1KeyboardBehaviour;
 class Demo1SeekBehaviour;
 class Demo1FleeBehaviour;
-class Demo1WanderBehaviour;
+class WanderBehaviour;
 
-class Demo1Player : public Demo1GameObject
+class Demo1Player : public GameObject
 {
 public:
 
@@ -22,7 +22,7 @@ protected:
 	Demo1KeyboardBehaviour* m_kbBehaviour;
 	Demo1SeekBehaviour* m_seekBehaviour;
 	Demo1FleeBehaviour* m_fleeBehaviour;
-	Demo1WanderBehaviour* m_wanderBehaviour;
+	WanderBehaviour* m_wanderBehaviour;
 
 private:
 };

@@ -4,9 +4,9 @@
 #include "./Menu/MenuState.h"
 #include "./Game/PlayState.h"
 #include "./Game/PauseState.h"
-#include "./Game/AssetManager.h"
 #include "./Demo1/Demo1.h"
 #include "./Demo2/Demo2.h"
+#include "./Game/AssetManager.h"
 
 Application::Application(int windowWidth, int windowHeight, const char* windowTitle) :
 	m_windowWidth(windowWidth),

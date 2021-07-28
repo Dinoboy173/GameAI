@@ -1,7 +1,7 @@
 #include "./Demo1/Demo1FleeBehaviour.h"
-#include "./Demo1/Demo1GameObject.h"
+#include "./Game/GameObject.h"
 
-Demo1FleeBehaviour::Demo1FleeBehaviour() : Demo1Behaviour()
+Demo1FleeBehaviour::Demo1FleeBehaviour() : Behaviour()
 {
 
 }
@@ -11,7 +11,7 @@ Demo1FleeBehaviour::~Demo1FleeBehaviour()
 
 }
 
-void Demo1FleeBehaviour::Update(Demo1GameObject* obj, float deltaTime)
+void Demo1FleeBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
 	if (distToTarget > m_targetRadius)
@@ -28,7 +28,7 @@ void Demo1FleeBehaviour::Update(Demo1GameObject* obj, float deltaTime)
 	obj->ApplyForce(forceDir);
 }
 
-void Demo1FleeBehaviour::Draw(Demo1GameObject* obj)
+void Demo1FleeBehaviour::Draw(GameObject* obj)
 {
 	DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
 	DrawCircle(m_target.x, m_target.y, 4, GRAY);

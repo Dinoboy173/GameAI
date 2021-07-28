@@ -2,7 +2,7 @@
 #include "./Demo1/Demo1KeyboardBehaviour.h"
 #include "./Demo1/Demo1SeekBehaviour.h"
 #include "./Demo1/Demo1FleeBehaviour.h"
-#include "./Demo1/Demo1WanderBehaviour.h"
+#include "./Game/Behaviour/WanderBehaviour.h"
 
 Demo1Player::Demo1Player()
 {
@@ -27,7 +27,7 @@ Demo1Player::Demo1Player()
 	});
 
 	// Wander
-	m_wanderBehaviour = new Demo1WanderBehaviour();
+	m_wanderBehaviour = new WanderBehaviour();
 	m_wanderBehaviour->SetTargetRadius(50.0f);
 }
 
@@ -65,10 +65,10 @@ void Demo1Player::Update(float deltaTime)
 		SetBehaviour(m_wanderBehaviour);
 	}
 
-	Demo1GameObject::Update(deltaTime);
+	GameObject::Update(deltaTime);
 }
 
 void Demo1Player::Draw()
 {
-	Demo1GameObject::Draw();
+	GameObject::Draw();
 }

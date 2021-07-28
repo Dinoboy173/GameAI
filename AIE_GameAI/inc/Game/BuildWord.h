@@ -2,6 +2,10 @@
 
 #include "raylib.h"
 #include "AssetManager.h"
+#include "./Game/Graph2D.h"
+
+class Graph2D;
+
 enum COLOR
 {
 	// a b g r
@@ -25,11 +29,19 @@ public:
 	void Load();
 	void Unload();
 
+	void LoadGraph();
+
 	void Update(float dt);
 	void Draw();
+
+	void DrawWorld();
+	void DrawGraph();
 
 	unsigned int GetImagePixel(Image img, int xPos, int yPos);
 
 protected:
 private:
+
+	Graph2D* m_graph = nullptr;
+
 };

@@ -33,10 +33,12 @@ public:
 	Rectangle foxSide = { 0.0f, 0.0f, 32.0f, 32.0f };
 	Rectangle foxFront = { 32.0f, 0.0f, 32.0f, 32.0f };
 	Rectangle foxBack = { 64.0f, 0.0f, 32.0f, 32.0f };
+	Rectangle fox = { 0.0f, 0.0f, 32.0f, 32.0f };
 
 	Rectangle rabbitSide = { 0.0f, 0.0f, 32.0f, 32.0f };
 	Rectangle rabbitFront = { 32.0f, 0.0f, 32.0f, 32.0f };
 	Rectangle rabbitBack = { 64.0f, 0.0f, 32.0f, 32.0f };
+	Rectangle rabbit = { 0.0f, 0.0f, 32.0f, 32.0f };
 
 protected:
 private:
