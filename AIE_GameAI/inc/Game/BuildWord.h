@@ -2,9 +2,13 @@
 
 #include "raylib.h"
 #include "AssetManager.h"
+#include "./Game/Rabbit.h"
+#include "./Game/Fox.h"
 #include "./Game/Graph2D.h"
 
 class Graph2D;
+class Rabbit;
+class Fox;
 
 enum COLOR
 {
@@ -40,8 +44,20 @@ public:
 	unsigned int GetImagePixel(Image img, int xPos, int yPos);
 
 protected:
-private:
 
 	Graph2D* m_graph = nullptr;
+
+private:
+
+	int m_numRows = ASSETS->imgGameMapInfo.height;
+	int m_numCols = ASSETS->imgGameMapInfo.width;
+
+	int m_tileSize = 32;
+	
+	Rabbit* m_rabbit;
+	Fox* m_fox;
+
+	std::vector<Rabbit*> m_rabbitList;
+	std::vector<Fox*> m_foxList;
 
 };

@@ -8,7 +8,7 @@ Rabbit::Rabbit()
 	// spawn rabbits using BuildWorld maybe
 
 	m_wanderBehaviour = new WanderBehaviour();
-	m_wanderBehaviour->SetTargetRadius(50.0f);
+	m_wanderBehaviour->SetTargetRadius(30.0f);
 }
 
 Rabbit::~Rabbit()
@@ -20,11 +20,12 @@ Rabbit::~Rabbit()
 
 void Rabbit::Update(float dt)
 {
+	SetBehaviour(m_wanderBehaviour);
 
+	GameObject::Update(dt);
 }
 
 void Rabbit::Draw()
 {
-	// Draw
-	GameObject::Draw(ASSETS->imgRabbit, ASSETS->rabbit);
+	GameObject::Draw(ASSETS->imgRabbit, ASSETS->rabbit, m_position.x, m_position.y);
 }

@@ -14,7 +14,7 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw();
 
-	virtual void Draw(Texture2D& img, Rectangle srcRec);
+	virtual void Draw(Texture2D& img, Rectangle srcRec, float xPos, float yPos);
 
 	void ApplyForce(const Vector2& force);
 

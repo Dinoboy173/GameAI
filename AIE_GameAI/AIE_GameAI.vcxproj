@@ -167,8 +167,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Demo1\WanderBehaviour.cpp" />
     <ClCompile Include="src\Demo2\Demo2GameObject.cpp" />
     <ClCompile Include="src\Demo2\Demo2.cpp" />
+    <ClCompile Include="src\Game\Fox.cpp" />
     <ClCompile Include="src\Game\Graph2D.cpp" />
     <ClCompile Include="src\Demo2\Demo2Graph2DEditor.cpp" />
     <ClCompile Include="src\Demo2\Demo2KeyboardBehaviour.cpp" />
@@ -193,6 +195,8 @@
     <ClCompile Include="src\Game\Behaviour\WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="inc\Demo1\WanderBehaviour.h" />
+    <ClInclude Include="inc\Game\Fox.h" />
     <ClInclude Include="inc\Game\GameObject.h" />
     <ClInclude Include="inc\Demo2\Demo2.h" />
     <ClInclude Include="inc\Demo2\Demo2Behaviour.h" />

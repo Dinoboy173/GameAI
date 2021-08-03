@@ -34,10 +34,12 @@ void GameObject::Draw()
 	DrawLine(m_position.x, m_position.y, heading.x, heading.y, BLACK);
 }
 
-void GameObject::Draw(Texture2D& img, Rectangle srcRec)
+void GameObject::Draw(Texture2D& img, Rectangle srcRec, float xPos, float yPos)
 {
-	Rectangle destRec = {  };
-	DrawTexturePro(img, srcRec, );
+	Rectangle destRec = { xPos, yPos, 32.0f, 32.0f };
+	Vector2 origin = { 16.0f, 16.0f };
+
+	DrawTexturePro(img, srcRec, destRec, origin, 0.0f, WHITE);
 }
 
 void GameObject::ApplyForce(const Vector2& force)
