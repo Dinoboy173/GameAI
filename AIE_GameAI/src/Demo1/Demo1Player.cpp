@@ -3,6 +3,7 @@
 #include "./Demo1/Demo1SeekBehaviour.h"
 #include "./Demo1/Demo1FleeBehaviour.h"
 #include "./Game/Behaviour/WanderBehaviour.h"
+#include "Demo1/Demo1FollowPathBehaviour.h"
 
 Demo1Player::Demo1Player()
 {
@@ -29,6 +30,14 @@ Demo1Player::Demo1Player()
 	// Wander
 	m_wanderBehaviour = new WanderBehaviour();
 	m_wanderBehaviour->SetTargetRadius(50.0f);
+
+	// Follow Path
+	m_followPathBehaviour = new Demo1FollowPathBehaviour();
+	m_followPathBehaviour->SetTargetRadius(10.0f);
+	m_followPathBehaviour->OnArrive([this]()
+		{
+			m_followPathBehaviour->NextNode();
+		});
 }
 
 Demo1Player::~Demo1Player()
@@ -39,6 +48,7 @@ Demo1Player::~Demo1Player()
 	delete m_fleeBehaviour;
 	delete m_seekBehaviour;
 	delete m_kbBehaviour;
+	delete m_followPathBehaviour;
 }
 
 void Demo1Player::Update(float deltaTime)
@@ -63,6 +73,11 @@ void Demo1Player::Update(float deltaTime)
 	if (IsKeyPressed(KeyboardKey(KEY_TWO)))
 	{
 		SetBehaviour(m_wanderBehaviour);
+	}
+
+	if (IsKeyPressed(KeyboardKey(KEY_THREE)))
+	{
+		SetBehaviour(m_followPathBehaviour);
 	}
 
 	GameObject::Update(deltaTime);

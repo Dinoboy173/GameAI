@@ -3,6 +3,7 @@
 #include "./Game/Behaviour/Behaviour.h"
 #include "raymath.h"
 #include <functional>
+#include "./Game/Graph.h"
 
 class WanderBehaviour : public Behaviour
 {

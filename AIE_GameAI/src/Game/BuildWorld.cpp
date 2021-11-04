@@ -58,8 +58,8 @@ void BuildWorld::LoadGraph()
 
 	m_numRows = ASSETS->imgGameMapInfo.height;
 	m_numCols = ASSETS->imgGameMapInfo.width;
-	float xOffset = m_tileSize / 2;
-	float yOffset = m_tileSize / 2;
+	float xOffset = float(m_tileSize / 2);
+	float yOffset = float(m_tileSize / 2);
 
 	for (int y = 0; y < m_numRows; y++)
 	{

@@ -3,7 +3,7 @@
 
 WanderBehaviour::WanderBehaviour() : Behaviour()
 {
-	
+	m_target = { 0, 0 };
 }
 WanderBehaviour::~WanderBehaviour()
 {

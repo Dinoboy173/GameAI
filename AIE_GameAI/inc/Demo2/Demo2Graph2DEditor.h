@@ -1,6 +1,6 @@
 #pragma once
 
-class Demo2Graph2D;
+class Graph2D;
 
 class Demo2Graph2DEditor
 {
@@ -12,12 +12,15 @@ public:
 	void Update(float dt);
 	void Draw();
 
-	Demo2Graph2D* GetGraph();
-	void SetGraph(Demo2Graph2D* graph);
+	Graph2D* GetGraph();
+	void SetGraph(Graph2D* graph);
 
 protected:
 
-	Demo2Graph2D* m_graph;
+	Graph2D* m_graph;
 
 private:
+
+	int m_radius = 60;
+
 };

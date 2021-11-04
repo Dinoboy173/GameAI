@@ -4,6 +4,7 @@
 #include "./Demo1/Demo1Player.h"
 #include "./Demo1/Demo1KeyboardBehaviour.h"
 #include "./Game/GameObject.h"
+#include "./Game/Graph.h"
 #include "raylib.h"
 
 #include <iostream>
@@ -48,7 +49,5 @@ void Demo1::Update(float dt)
 
 void Demo1::Draw()
 {
-	DrawText("Demo1", 10, 10, 20, LIGHTGRAY);
-
 	m_player->Draw();
 }

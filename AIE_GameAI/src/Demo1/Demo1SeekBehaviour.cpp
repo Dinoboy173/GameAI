@@ -3,7 +3,7 @@
 
 Demo1SeekBehaviour::Demo1SeekBehaviour() : Behaviour()
 {
-
+	m_target = {0, 0};
 }
 
 Demo1SeekBehaviour::~Demo1SeekBehaviour()
@@ -24,7 +24,6 @@ void Demo1SeekBehaviour::Update(GameObject* obj, float deltaTime)
 	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
 	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
 	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
-
 
 	obj->ApplyForce(forceDir);
 }

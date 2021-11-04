@@ -93,6 +93,9 @@
     <ClCompile Include="src\Demo1\WanderBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Demo1\Demo1FollowPathBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Demo1\Demo1.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\Demo1\WanderBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Demo1\Demo1FollowPathBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

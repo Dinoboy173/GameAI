@@ -25,6 +25,7 @@ private:
 
 	Application* m_app;
 
+	Demo2Graph2DEditor* m_graphEditor = nullptr;
 	Graph2D* m_graph = nullptr;
 
 };

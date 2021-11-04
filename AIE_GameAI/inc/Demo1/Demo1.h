@@ -1,9 +1,13 @@
 #pragma once
 
 #include "./Menu/IGameState.h"
+#include "./Game/Graph.h"
+#include "./Game/Graph2D.h"
 
 class Application;
 class GameObject;
+
+class Graph2D;
 
 class Demo1 : public IGameState
 {

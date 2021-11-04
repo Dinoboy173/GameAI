@@ -1,5 +1,6 @@
 #include "./Game/Behaviour/WanderBehaviour.h"
 #include "./Game/GameObject.h"
+#include "./Game/Graph.h"
 
 WanderBehaviour::WanderBehaviour() : Behaviour()
 {
@@ -16,7 +17,7 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 	if (distToWp < 10 || Vector2Length(obj->GetVelocity()) == 0 || IsKeyPressed(KEY_Q))
 	{
-		Vector2 wanderCenter;
+		Vector2 wanderCenter; // will be position
 
 		if (Vector2Length(obj->GetVelocity()) == 0)
 		{
@@ -24,7 +25,15 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 			obj->SetVelocity(newVel);
 		}
 
-		wanderCenter = Vector2Add(Vector2Scale(Vector2Normalize(obj->GetVelocity()), obj->GetMaxSpeed()), obj->GetPosition());
+		//wanderCenter = Vector2Add(Vector2Scale(Vector2Normalize(obj->GetVelocity()), obj->GetMaxSpeed()), obj->GetPosition()); // will be position
+
+		wanderCenter = obj->GetPosition();
+
+
+
+		// get all nodes within radius
+
+		// pathfind to node
 
 		auto angle = (rand() % 360) * PI / 180.0f;
 
@@ -44,8 +53,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 void WanderBehaviour::Draw(GameObject* obj)
 {
-	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
-	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
+	//DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
+	//DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
 }
 
 const Vector2& WanderBehaviour::GetTarget() const

@@ -6,6 +6,7 @@ class Demo1KeyboardBehaviour;
 class Demo1SeekBehaviour;
 class Demo1FleeBehaviour;
 class WanderBehaviour;
+class Demo1FollowPathBehaviour;
 
 class Demo1Player : public GameObject
 {
@@ -23,6 +24,7 @@ protected:
 	Demo1SeekBehaviour* m_seekBehaviour;
 	Demo1FleeBehaviour* m_fleeBehaviour;
 	WanderBehaviour* m_wanderBehaviour;
+	Demo1FollowPathBehaviour* m_followPathBehaviour;
 
 private:
 };

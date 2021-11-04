@@ -26,25 +26,50 @@ void Demo2::Load()
 
 	m_graph = new Graph2D();
 
-	auto nodeA = m_graph->AddNode({ 100, 100 });
-	auto nodeB = m_graph->AddNode({ 200, 100 });
-	auto nodeC = m_graph->AddNode({ 200, 200 });
+	int numRows = 8;
+	int numCols = 8;
+	float xOffset = 100;
+	float yOffset = 100;
+	float spacing = 50;
 
-	m_graph->AddEdge(nodeA, nodeB, 100);
-	m_graph->AddEdge(nodeB, nodeA, 100);
-	m_graph->AddEdge(nodeB, nodeC, 100);
-	m_graph->AddEdge(nodeC, nodeB, 100);
+	for (int y = 0; y < numRows; y++)
+	{
+		for (int x = 0; x < numCols; x++)
+		{
+			m_graph->AddNode({
+				x * spacing + xOffset,
+				y * spacing + yOffset
+				});
+		}
+	}
 
-	//m_graphEditor = new Demo2Graph2DEditor();
-	//m_graphEditor->SetGraph(m_graph);
+	for (auto node : m_graph->GetNodes())
+	{
+		std::vector<Graph2D::Node*> nearbyNodes;
+
+		m_graph->GetNearbyNodes(node->data, 60, nearbyNodes);
+
+		for (auto connectedNode : nearbyNodes)
+		{
+			if (connectedNode == node)
+				continue;
+
+			float dist = Vector2Distance(node->data, connectedNode->data);
+			m_graph->AddEdge(node, connectedNode, dist);
+			m_graph->AddEdge(connectedNode, node, dist);
+		}
+	}
+
+	m_graphEditor = new Demo2Graph2DEditor();
+	m_graphEditor->SetGraph(m_graph);
 }
 
 void Demo2::Unload()
 {
 	std::cout << "Unloading Demo2\n";
 
-	//delete m_graphEditor;
-	//m_graphEditor = nullptr;
+	delete m_graphEditor;
+	m_graphEditor = nullptr;
 
 	delete m_graph;
 	m_graph = nullptr;
@@ -52,7 +77,7 @@ void Demo2::Unload()
 
 void Demo2::Update(float dt)
 {
-	//m_graphEditor->Update(dt);
+	m_graphEditor->Update(dt);
 
 	if (IsKeyPressed(KeyboardKey(KEY_BACKSPACE)))
 	{
@@ -65,5 +90,5 @@ void Demo2::Draw()
 {
 	DrawText("Demo2", 10, 10, 20, LIGHTGRAY);
 
-	//m_graphEditor->Draw();
+	m_graphEditor->Draw();
 }

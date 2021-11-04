@@ -3,7 +3,7 @@
 
 Demo2SeekBehaviour::Demo2SeekBehaviour() : Demo2Behaviour()
 {
-
+	m_target = { 0, 0 };
 }
 
 Demo2SeekBehaviour::~Demo2SeekBehaviour()
