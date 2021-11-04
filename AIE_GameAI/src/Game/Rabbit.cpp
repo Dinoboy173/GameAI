@@ -4,11 +4,8 @@
 
 Rabbit::Rabbit()
 {
-	// need list of rabbits
-	// spawn rabbits using BuildWorld maybe
-
 	m_wanderBehaviour = new WanderBehaviour();
-	m_wanderBehaviour->SetTargetRadius(30.0f);
+	m_wanderBehaviour->SetTargetRadius(50.0f);
 }
 
 Rabbit::~Rabbit()

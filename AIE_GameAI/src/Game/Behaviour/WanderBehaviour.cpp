@@ -1,6 +1,10 @@
 #include "./Game/Behaviour/WanderBehaviour.h"
 #include "./Game/GameObject.h"
 #include "./Game/Graph.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <random>
+#include <time.h>
 
 WanderBehaviour::WanderBehaviour() : Behaviour()
 {
@@ -17,7 +21,7 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 	if (distToWp < 10 || Vector2Length(obj->GetVelocity()) == 0 || IsKeyPressed(KEY_Q))
 	{
-		Vector2 wanderCenter; // will be position
+		Vector2 wanderCenter;
 
 		if (Vector2Length(obj->GetVelocity()) == 0)
 		{
@@ -28,8 +32,6 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 		//wanderCenter = Vector2Add(Vector2Scale(Vector2Normalize(obj->GetVelocity()), obj->GetMaxSpeed()), obj->GetPosition()); // will be position
 
 		wanderCenter = obj->GetPosition();
-
-
 
 		// get all nodes within radius
 
@@ -53,8 +55,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 void WanderBehaviour::Draw(GameObject* obj)
 {
-	//DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
-	//DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
+	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
+	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
 }
 
 const Vector2& WanderBehaviour::GetTarget() const
