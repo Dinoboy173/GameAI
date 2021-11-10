@@ -1,10 +1,11 @@
 #include "./Game/Behaviour/WanderBehaviour.h"
 #include "./Game/GameObject.h"
-#include "./Game/Graph.h"
+#include "./Game/Graph2D.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <random>
 #include <time.h>
+#include <iostream>
 
 WanderBehaviour::WanderBehaviour() : Behaviour()
 {
@@ -33,10 +34,6 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 		wanderCenter = obj->GetPosition();
 
-		// get all nodes within radius
-
-		// pathfind to node
-
 		auto angle = (rand() % 360) * PI / 180.0f;
 
 		Vector2 displace = { sin(angle) * m_targetRadius, cos(angle) * m_targetRadius };
@@ -53,7 +50,7 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 	obj->ApplyForce(wanderTotalDistance);
 }
 
-void WanderBehaviour::Draw(GameObject* obj)
+void WanderBehaviour::Draw()
 {
 	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
 	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });

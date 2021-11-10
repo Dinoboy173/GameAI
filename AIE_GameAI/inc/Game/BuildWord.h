@@ -1,5 +1,3 @@
-#pragma once
-
 #include "raylib.h"
 #include "AssetManager.h"
 #include "./Game/Rabbit.h"

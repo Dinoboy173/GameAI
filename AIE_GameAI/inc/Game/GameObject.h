@@ -44,9 +44,9 @@ protected:
 	Vector2 m_position = { 0.0f, 0.0f };
 	Vector2 m_velocity = { 0.0f, 0.0f };
 	Vector2 m_acceleration = { 0.0f, 0.0f };
-	float m_friction = 0.0f;
+	float m_friction = 2.0f;
 	float m_maxSpeed = 100.0f;
-	float m_maxForce = 100.0f;
+	float m_maxForce = 200.0f;
 
 	Behaviour* m_behaviour = nullptr;
 

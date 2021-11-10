@@ -90,10 +90,13 @@
     <ClCompile Include="src\Game\Fox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Demo1\WanderBehaviour.cpp">
+    <ClCompile Include="src\Demo1\Demo1FollowPathBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Demo1\Demo1FollowPathBehaviour.cpp">
+    <ClCompile Include="src\Demo1\Demo1WanderBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Behaviour\SeekBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -182,10 +185,13 @@
     <ClInclude Include="inc\Game\Fox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Demo1\WanderBehaviour.h">
+    <ClInclude Include="inc\Demo1\Demo1FollowPathBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="inc\Demo1\Demo1FollowPathBehaviour.h">
+    <ClInclude Include="inc\Demo1\Demo1WanderBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Game\Behaviour\SeekBehaviour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

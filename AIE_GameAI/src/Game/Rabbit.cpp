@@ -5,7 +5,7 @@
 Rabbit::Rabbit()
 {
 	m_wanderBehaviour = new WanderBehaviour();
-	m_wanderBehaviour->SetTargetRadius(50.0f);
+	m_wanderBehaviour->SetTargetRadius(100.0f);
 }
 
 Rabbit::~Rabbit()
@@ -24,5 +24,6 @@ void Rabbit::Update(float dt)
 
 void Rabbit::Draw()
 {
+	m_wanderBehaviour->Draw();
 	GameObject::Draw(ASSETS->imgRabbit, ASSETS->rabbit, m_position.x, m_position.y);
 }

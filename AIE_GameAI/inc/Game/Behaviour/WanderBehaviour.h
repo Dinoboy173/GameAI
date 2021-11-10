@@ -4,6 +4,9 @@
 #include "raymath.h"
 #include <functional>
 #include "./Game/Graph.h"
+#include "./Game/BuildWord.h"
+
+class BuildWorld;
 
 class WanderBehaviour : public Behaviour
 {
@@ -13,7 +16,7 @@ public:
 	virtual ~WanderBehaviour();
 
 	virtual void Update(GameObject* obj, float deltaTime);
-	virtual void Draw(GameObject* obj);
+	virtual void Draw();
 
 	const Vector2& GetTarget() const;
 	void SetTarget(const Vector2& target);
@@ -28,6 +31,8 @@ protected:
 
 	Vector2 m_wanderCenter = { 0.0f, 0.0f };
 	Vector2 m_wanderPoint = { 0.0f, 0.0f };
+
+	BuildWorld* m_world;
 
 private:
 };

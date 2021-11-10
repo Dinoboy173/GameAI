@@ -1,3 +1,5 @@
+#pragma once
+
 #include "./Game/Graph.h"
 #include "raymath.h"
 

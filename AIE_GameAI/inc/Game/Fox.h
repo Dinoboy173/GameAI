@@ -3,6 +3,9 @@
 #include "./Game/GameObject.h"
 
 class WanderBehaviour;
+class SeekBehaviour;
+class Rabbit;
+class BuildWorld;
 
 class Fox : public GameObject
 {
@@ -16,7 +19,14 @@ public:
 
 protected:
 
+	Rabbit* m_rabbit;
+	BuildWorld* m_world;
+
 	WanderBehaviour* m_wanderBehaviour;
+	SeekBehaviour* m_seekBehaviour;
 
 private:
+
+	float seekRadius = 100.0f;
+
 };
