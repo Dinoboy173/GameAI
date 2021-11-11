@@ -8,7 +8,7 @@
 
 BuildWorld::BuildWorld()
 {
-	
+
 }
 
 BuildWorld::~BuildWorld()
@@ -99,12 +99,12 @@ void BuildWorld::Update(float dt)
 {
 	for (auto i : m_rabbitList)
 	{
-		i->Update(dt);
+		i->Update(dt, this);
 	}
-
+	
 	for (auto i : m_foxList)
 	{
-		i->Update(dt);
+		i->Update(dt, this);
 	}
 }
 
@@ -133,7 +133,7 @@ void BuildWorld::DrawWorld()
 		{
 			auto color = GetImagePixel(ASSETS->imgGameMapInfoRaw, x, y);
 
-			Rectangle bushDest = { x * (float)m_tileSize, y * (float)m_tileSize, m_tileSize, m_tileSize };
+			Rectangle bushDest = { x * m_tileSize, y * m_tileSize, m_tileSize, m_tileSize };
 
 			DrawTexture(ASSETS->imgGrass, x * m_tileSize, y * m_tileSize, WHITE); // Draws Grass
 
@@ -185,4 +185,40 @@ unsigned int BuildWorld::GetImagePixel(Image img, int xPos, int yPos)
 	unsigned int color = data[yPos * img.width + xPos];
 
 	return color;
+}
+
+Vector2 BuildWorld::IsRabbitNearby(Fox* fox, float radius)
+{
+	if (this != NULL)
+	{
+		for (int i = 0; i < m_rabbitList.size(); i++)
+		{
+			float distToRabbit = Vector2Distance(fox->GetPosition(), m_rabbitList[i]->GetPosition());
+
+			if (distToRabbit < radius)
+			{
+				return m_rabbitList[i]->GetPosition();
+			}
+		}
+	}
+	
+	return { 0, 0 };
+}
+
+Vector2 BuildWorld::IsFoxNearby(Rabbit* rabbit, float radius)
+{
+	if (this != NULL)
+	{
+		for (int i = 0; i < m_foxList.size(); i++)
+		{
+			float distToFox = Vector2Distance(rabbit->GetPosition(), m_foxList[i]->GetPosition());
+
+			if (distToFox < radius)
+			{
+				return m_foxList[i]->GetPosition();
+			}
+		}
+	}
+
+	return { 0, 0 };
 }

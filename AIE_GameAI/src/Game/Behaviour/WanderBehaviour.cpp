@@ -9,7 +9,7 @@
 
 WanderBehaviour::WanderBehaviour() : Behaviour()
 {
-	
+	m_target = Vector2{ 0, 0 };
 }
 WanderBehaviour::~WanderBehaviour()
 {
@@ -39,6 +39,14 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 		Vector2 displace = { sin(angle) * m_targetRadius, cos(angle) * m_targetRadius };
 
 		Vector2 wanderPoint = Vector2Add(wanderCenter, displace);
+
+		if (wanderPoint.x <= 0 ||
+			wanderPoint.x >= m_windowSize ||
+			wanderPoint.y <= 0 ||
+			wanderPoint.y >= m_windowSize)
+		{
+			return;
+		}
 
 		SetTarget(wanderPoint);
 		m_wanderCenter = wanderCenter;

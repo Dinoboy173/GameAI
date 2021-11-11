@@ -4,12 +4,23 @@
 #include <algorithm>
 #include <functional>
 
+class IGraph
+{
+public:
+    enum class SearchType
+    {
+        BFS,
+        DIJKSTRA,
+    };
+};
+
 template<class TNodeData, class TEdgeData>
-class Graph
+class Graph : public IGraph
 {
 public:
     struct Node;
     struct Edge;
+
     struct Node
     {
         TNodeData data;
@@ -20,6 +31,10 @@ public:
         Node* node;
         PFNode* parent = nullptr;
 
+        int depth = 0;
+        float gScore = 0;
+        float hScore = 0;
+
         PFNode() {}
         PFNode(Node* n, PFNode* p) : node(n), parent(p) {}
     };
@@ -28,6 +43,7 @@ public:
         Node* to;
         TEdgeData data;
     };
+
 public:
     // ===========================================================================
     // Constructor
@@ -112,7 +128,7 @@ public:
         }
     }
 
-    std::list<Node*> FindPath(Node* startNode, std::function<bool(Node* n)> processNode)
+    std::list<Node*> FindPath(SearchType type, Node* startNode, std::function<bool(Node* n)> processNode)
     {
         std::list<PFNode*> stack;       // open list
         std::list<PFNode*> visited;     // close list
@@ -158,14 +174,44 @@ public:
             
             for (auto& edge : pfNode->node->connections)
             {
+                auto childNode = edge.to;
+                float gScore = (pfNode->parent ? pfNode->parent->gScore : 0) + edge.data;
+                float hScore = 0; // we dont know the target node
+                int depth = pfNode->depth + 1;
+
                 // check that the conection node
                 // does not exist in the visited or stack
                 PFNode* childPFNode = GetNodesInList(edge.to);
                 if (childPFNode == nullptr)
                 {
-                    stack.push_back(new PFNode(edge.to, pfNode));
+                    childPFNode = new PFNode(edge.to, pfNode);
+                    childPFNode->gScore = gScore;
+                    childPFNode->hScore = hScore;
+                    childPFNode->depth = depth;
+                    stack.push_back(childPFNode);
+                }
+                else if (childPFNode->gScore > gScore)
+                {
+                    // child node on stack already
+                    // but we can get to it easier
+                    childNode->parent = pfNode;
+                    childPFNode->gScore = gScore;
+                    childPFNode->hScore = hScore;
+                    childPFNode->depth = depth;
                 }
             }
+
+            // sort stack by gScore
+
+            stack.sort( [&](PFNode* a, PFNode* b) -> bool
+                {
+                    switch (type)
+                    {
+                    case SearchType::DIJKSTRA: return a->gScore < b->gScore;
+                    case SearchType::BFS: return a->depth < b->depth;
+                    default: return a->gScore < b->gScore; // default dijksra
+                    }
+            });
         }
         
         // cleanup our PFNode

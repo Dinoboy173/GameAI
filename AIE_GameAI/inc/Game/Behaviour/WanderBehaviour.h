@@ -5,8 +5,10 @@
 #include <functional>
 #include "./Game/Graph.h"
 #include "./Game/BuildWord.h"
+#include "./Menu/Application.h"
 
 class BuildWorld;
+class Application;
 
 class WanderBehaviour : public Behaviour
 {
@@ -28,6 +30,7 @@ protected:
 
 	Vector2 m_target;
 	float m_targetRadius = 1.0f;
+	int m_windowSize = 1024;
 
 	Vector2 m_wanderCenter = { 0.0f, 0.0f };
 	Vector2 m_wanderPoint = { 0.0f, 0.0f };

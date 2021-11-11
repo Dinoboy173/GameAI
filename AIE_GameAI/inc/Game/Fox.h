@@ -4,6 +4,8 @@
 
 class WanderBehaviour;
 class SeekBehaviour;
+class FollowPathBehaviour;
+
 class Rabbit;
 class BuildWorld;
 
@@ -14,19 +16,21 @@ public:
 	Fox();
 	virtual ~Fox();
 
-	virtual void Update(float dt);
+	virtual void Update(float dt, BuildWorld* world);
 	virtual void Draw();
+
+	Behaviour* CalculateDesiredBehaviour();
 
 protected:
 
-	Rabbit* m_rabbit;
 	BuildWorld* m_world;
 
 	WanderBehaviour* m_wanderBehaviour;
 	SeekBehaviour* m_seekBehaviour;
+	FollowPathBehaviour* m_followPathBehaviour;
 
 private:
 
-	float seekRadius = 100.0f;
+	float m_seekRadius = 100.0f;
 
 };

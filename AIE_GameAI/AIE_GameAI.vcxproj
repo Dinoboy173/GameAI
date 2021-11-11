@@ -171,6 +171,8 @@
     <ClCompile Include="src\Demo1\Demo1WanderBehaviour.cpp" />
     <ClCompile Include="src\Demo2\Demo2GameObject.cpp" />
     <ClCompile Include="src\Demo2\Demo2.cpp" />
+    <ClCompile Include="src\Game\Behaviour\FleeBehaviour.cpp" />
+    <ClCompile Include="src\Game\Behaviour\FollowPathBehaviour.cpp" />
     <ClCompile Include="src\Game\Behaviour\SeekBehaviour.cpp" />
     <ClCompile Include="src\Game\Fox.cpp" />
     <ClCompile Include="src\Game\Graph2D.cpp" />
@@ -199,6 +201,8 @@
   <ItemGroup>
     <ClInclude Include="inc\Demo1\Demo1FollowPathBehaviour.h" />
     <ClInclude Include="inc\Demo1\Demo1WanderBehaviour.h" />
+    <ClInclude Include="inc\Game\Behaviour\FleeBehaviour.h" />
+    <ClInclude Include="inc\Game\Behaviour\FollowPathBehaviour.h" />
     <ClInclude Include="inc\Game\Behaviour\SeekBehaviour.h" />
     <ClInclude Include="inc\Game\Fox.h" />
     <ClInclude Include="inc\Game\GameObject.h" />

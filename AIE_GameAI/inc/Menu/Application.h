@@ -20,11 +20,12 @@ public:
 
 	GameStateManager* GetGameStateManager();
 
+	int m_windowWidth;
+	int m_windowHeight;
+
 protected:
 private:
 
-	int m_windowWidth;
-	int m_windowHeight;
 	const char* m_windowTitle;
 
 	GameObject* m_player = nullptr;
