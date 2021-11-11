@@ -18,7 +18,7 @@ public:
 	virtual ~WanderBehaviour();
 
 	virtual void Update(GameObject* obj, float deltaTime);
-	virtual void Draw();
+	virtual void Draw(GameObject* obj);
 
 	const Vector2& GetTarget() const;
 	void SetTarget(const Vector2& target);

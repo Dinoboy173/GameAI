@@ -16,8 +16,6 @@ public:
 	virtual void Update(float dt, BuildWorld* world);
 	virtual void Draw();
 
-	bool isDead = false;
-
 protected:
 
 	WanderBehaviour* m_wanderBehaviour;

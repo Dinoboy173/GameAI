@@ -39,6 +39,8 @@ Fox::Fox()
 	// 	});
 	
 	SetBehaviour(m_wanderBehaviour);
+
+	SetMaxSpeed(90);
 }
 
 Fox::~Fox()
@@ -58,6 +60,10 @@ void Fox::Update(float dt, BuildWorld* world)
 	{
 		SetBehaviour(m_seekBehaviour);
 		m_seekBehaviour->SetTarget(rabbit);
+		m_seekBehaviour->OnArrive([this]()
+			{
+				SetBehaviour(m_wanderBehaviour);
+			});
 	}
 
 	// auto desiredBehaviour = CalculateDesiredBehaviour();
@@ -71,7 +77,7 @@ void Fox::Update(float dt, BuildWorld* world)
 
 void Fox::Draw()
 {
-	m_wanderBehaviour->Draw();
+	GetBehaviour()->Draw(this);
 	GameObject::Draw(ASSETS->imgFox, ASSETS->fox, m_position.x, m_position.y);
 }
 

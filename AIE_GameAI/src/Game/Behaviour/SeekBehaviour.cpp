@@ -23,6 +23,16 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 	Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(m_target, obj->GetPosition()));
 	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
 	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
+
+	if (targetForcePos.x <= 0 ||
+		targetForcePos.x >= m_windowSize ||
+		targetForcePos.y <= 0 ||
+		targetForcePos.y >= m_windowSize)
+	{
+		targetForcePos.x -= targetForcePos.x;
+		targetForcePos.y -= targetForcePos.y;
+	}
+
 	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
 
 	obj->ApplyForce(forceDir);
@@ -30,8 +40,11 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 
 void SeekBehaviour::Draw(GameObject* obj)
 {
-	DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
-	DrawCircle(m_target.x, m_target.y, 4, GRAY);
+	DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
+	DrawCircleV(m_target, 5, { 0, 0, 0, 128 });
+
+	// DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
+	// DrawCircle(m_target.x, m_target.y, 4, GRAY);
 }
 
 const Vector2& SeekBehaviour::GetTarget() const

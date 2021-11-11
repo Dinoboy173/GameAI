@@ -30,8 +30,6 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 			obj->SetVelocity(newVel);
 		}
 
-		//wanderCenter = Vector2Add(Vector2Scale(Vector2Normalize(obj->GetVelocity()), obj->GetMaxSpeed()), obj->GetPosition()); // will be position
-
 		wanderCenter = obj->GetPosition();
 
 		auto angle = (rand() % 360) * PI / 180.0f;
@@ -58,10 +56,13 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 	obj->ApplyForce(wanderTotalDistance);
 }
 
-void WanderBehaviour::Draw()
+void WanderBehaviour::Draw(GameObject* obj)
 {
-	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
-	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
+	if (IsKeyDown(KeyboardKey(KEY_F3)))
+	{
+		DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
+		DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
+	}
 }
 
 const Vector2& WanderBehaviour::GetTarget() const

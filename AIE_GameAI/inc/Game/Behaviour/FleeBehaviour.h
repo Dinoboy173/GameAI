@@ -26,6 +26,7 @@ protected:
 
 	Vector2 m_target;
 	float m_targetRadius = 1.0f;
+	int m_windowSize = 1024;
 
 	std::function<void()> m_onExitedFn;
 

@@ -44,6 +44,8 @@ public:
 	Vector2 IsRabbitNearby(Fox* fox, float radius);
 	Vector2 IsFoxNearby(Rabbit* rabbit, float radius);
 
+	void RemoveRabbitFromList(Rabbit* removeRabbit);
+
 	Graph2D* m_graph = nullptr;
 
 protected:

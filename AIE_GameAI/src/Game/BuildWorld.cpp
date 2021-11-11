@@ -222,3 +222,25 @@ Vector2 BuildWorld::IsFoxNearby(Rabbit* rabbit, float radius)
 
 	return { 0, 0 };
 }
+
+void BuildWorld::RemoveRabbitFromList(Rabbit* removeRabbit)
+{
+	std::vector<Rabbit*> tempList;
+
+	for (auto rabbit : m_rabbitList)
+	{
+		if (rabbit != removeRabbit)
+		{
+			m_rabbitList.push_back(rabbit);
+		}
+	}
+
+	m_rabbitList.clear();
+
+	delete removeRabbit;
+
+	for (auto rabbit : tempList)
+	{
+		m_rabbitList.push_back(rabbit);
+	}
+}
