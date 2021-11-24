@@ -1,6 +1,6 @@
 #include "./Game/Rabbit.h"
 #include "./Game/Behaviour/WanderBehaviour.h"
-#include "./Game/Behaviour//FleeBehaviour.h"
+#include "./Game/Behaviour/FleeBehaviour.h"
 #include "./Game/AssetManager.h"
 
 Rabbit::Rabbit()

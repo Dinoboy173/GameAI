@@ -7,6 +7,7 @@
 #include "./Game/Graph.h"
 
 class BuildWorld;
+class Graph2D;
 
 class FollowPathBehaviour : public Behaviour
 {
@@ -34,8 +35,8 @@ protected:
 	float m_targetRadius = 1.0f;
 	int currentNode = 0;
 
-	// list of nodes 
-	// std::list<>
+	// list of nodes
+	std::list<Graph<Vector2, float>::Node*> nodes;
 
 private:
 

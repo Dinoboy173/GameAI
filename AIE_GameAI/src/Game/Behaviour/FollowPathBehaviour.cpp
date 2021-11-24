@@ -33,8 +33,6 @@ void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
 
 void FollowPathBehaviour::Draw(GameObject* obj)
 {
-	DrawText("Demo1", 10, 10, 20, LIGHTGRAY);
-
 	// Draw all connections
 	for (auto node : m_graph->GetNodes())
 	{
