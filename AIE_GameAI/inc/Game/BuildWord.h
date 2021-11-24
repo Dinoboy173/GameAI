@@ -41,10 +41,11 @@ public:
 
 	unsigned int GetImagePixel(Image img, int xPos, int yPos);
 
-	Vector2 IsRabbitNearby(Fox* fox, float radius);
+	Vector2 IsRabbitNearby(GameObject* obj, float radius);
 	Vector2 IsFoxNearby(Rabbit* rabbit, float radius);
 
 	void RemoveRabbitFromList(Rabbit* removeRabbit);
+	void AddRabbit(Vector2 pos);
 
 	Graph2D* m_graph = nullptr;
 
@@ -53,6 +54,8 @@ protected:
 	
 
 private:
+
+	bool editingList = false;
 
 	int m_numRows = ASSETS->imgGameMapInfo.height;
 	int m_numCols = ASSETS->imgGameMapInfo.width;

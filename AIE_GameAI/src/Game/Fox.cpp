@@ -4,6 +4,7 @@
 #include "./Game/Behaviour/FollowPathBehaviour.h"
 #include "./Game/AssetManager.h"
 #include "./Game/Rabbit.h"
+#include <iostream>
 
 Fox::Fox()
 {
@@ -13,7 +14,7 @@ Fox::Fox()
 
 	// seek
 	m_seekBehaviour = new SeekBehaviour();
-	m_seekBehaviour->SetTargetRadius(50.0f);
+	m_seekBehaviour->SetTargetRadius(m_seekRadius);
 	m_seekBehaviour->OnArrive([this]()
 	{
 		SetBehaviour(m_wanderBehaviour);
@@ -40,7 +41,7 @@ Fox::Fox()
 	
 	SetBehaviour(m_wanderBehaviour);
 
-	SetMaxSpeed(90);
+	SetMaxSpeed(95);
 }
 
 Fox::~Fox()
@@ -77,11 +78,15 @@ void Fox::Update(float dt, BuildWorld* world)
 
 void Fox::Draw()
 {
-	GetBehaviour()->Draw(this);
+	bool behaviourDebug = false;
+
+	if (IsKeyDown(KeyboardKey(KEY_F3)))
+		GetBehaviour()->Draw(this);
+
 	GameObject::Draw(ASSETS->imgFox, ASSETS->fox, m_position.x, m_position.y);
 }
 
-Behaviour* Fox::CalculateDesiredBehaviour()
+Behaviour* Fox::CalculateDesiredBehaviour(BuildWorld* world)
 {
 	// auto behaviour;
 

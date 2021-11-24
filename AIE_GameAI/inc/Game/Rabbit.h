@@ -16,6 +16,8 @@ public:
 	virtual void Update(float dt, BuildWorld* world);
 	virtual void Draw();
 
+	Behaviour* CalculateDesiredBehaviour(BuildWorld* world, Vector2 foxPos);
+
 protected:
 
 	WanderBehaviour* m_wanderBehaviour;
@@ -24,6 +26,7 @@ protected:
 
 private:
 
-	float m_fleeRadius = 60.0f;
+	float m_fleeRadius = 100.0f;
+	float m_mateRadius = 25.0f;
 
 };

@@ -2,6 +2,7 @@
 
 #include "raymath.h"
 #include "./Game/AssetManager.h"
+#include <vector>
 
 class Behaviour;
 
@@ -28,6 +29,7 @@ public:
 	const float& GetMaxForce() const;
 	
 	Behaviour* GetBehaviour();
+	Behaviour* GetPreviousBehaviour();
 
 	// Setters
 	void SetPosition(const Vector2& pos);
@@ -38,6 +40,7 @@ public:
 	void SetMaxForce(const float& force);
 
 	void SetBehaviour(Behaviour* behaviour);
+	void SetPreviousBehaviour(Behaviour* behaviour);
 
 protected:
 
@@ -49,6 +52,7 @@ protected:
 	float m_maxForce = 200.0f;
 
 	Behaviour* m_behaviour = nullptr;
+	Behaviour* m_previousBehviour = nullptr;
 
 private:
 };

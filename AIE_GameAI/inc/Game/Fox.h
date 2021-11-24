@@ -19,7 +19,7 @@ public:
 	virtual void Update(float dt, BuildWorld* world);
 	virtual void Draw();
 
-	Behaviour* CalculateDesiredBehaviour();
+	Behaviour* CalculateDesiredBehaviour(BuildWorld* world);
 
 protected:
 

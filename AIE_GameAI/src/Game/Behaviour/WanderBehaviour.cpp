@@ -20,8 +20,10 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToWp = Vector2Length(Vector2Subtract(m_wanderPoint, obj->GetPosition()));
 
-	if (distToWp < 10 || Vector2Length(obj->GetVelocity()) == 0 || IsKeyPressed(KEY_Q))
+	if (distToWp < 10 || Vector2Length(obj->GetVelocity()) == 0 || IsKeyPressed(KEY_Q) || obj->GetPreviousBehaviour() != this)
 	{
+		obj->SetPreviousBehaviour(this);
+
 		Vector2 wanderCenter;
 
 		if (Vector2Length(obj->GetVelocity()) == 0)
@@ -58,11 +60,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 void WanderBehaviour::Draw(GameObject* obj)
 {
-	if (IsKeyDown(KeyboardKey(KEY_F3)))
-	{
-		DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
-		DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
-	}
+	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
+	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
 }
 
 const Vector2& WanderBehaviour::GetTarget() const

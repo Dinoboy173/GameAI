@@ -101,7 +101,7 @@ void BuildWorld::Update(float dt)
 	{
 		i->Update(dt, this);
 	}
-	
+
 	for (auto i : m_foxList)
 	{
 		i->Update(dt, this);
@@ -114,9 +114,10 @@ void BuildWorld::Draw()
 
 	for (auto i : m_rabbitList)
 	{
-		i->Draw();
+		if (!editingList)
+			i->Draw();
 	}
-
+	
 	for (auto i : m_foxList)
 	{
 		i->Draw();
@@ -155,9 +156,7 @@ void BuildWorld::DrawWorld()
 void BuildWorld::DrawGraph()
 {
 	if (IsKeyDown(KeyboardKey(KEY_TAB)))
-	{
 		DrawTexturePro(ASSETS->imgGameMapInfo, { 0.0f, 0.0f, 32.0f, 32.0f }, { 0.0f, 0.0f, 1024.0f, 1024.0f }, { 0, 0 }, 0.0f, WHITE);
-	}
 
 	if (IsKeyDown(KeyboardKey(KEY_F2)))
 	{
@@ -187,17 +186,18 @@ unsigned int BuildWorld::GetImagePixel(Image img, int xPos, int yPos)
 	return color;
 }
 
-Vector2 BuildWorld::IsRabbitNearby(Fox* fox, float radius)
+Vector2 BuildWorld::IsRabbitNearby(GameObject* obj, float radius)
 {
 	if (this != NULL)
 	{
 		for (int i = 0; i < m_rabbitList.size(); i++)
 		{
-			float distToRabbit = Vector2Distance(fox->GetPosition(), m_rabbitList[i]->GetPosition());
-
-			if (distToRabbit < radius)
+			if (m_rabbitList[i] != obj)
 			{
-				return m_rabbitList[i]->GetPosition();
+				float distToRabbit = Vector2Distance(obj->GetPosition(), m_rabbitList[i]->GetPosition());
+
+				if (distToRabbit < radius)
+					return m_rabbitList[i]->GetPosition();
 			}
 		}
 	}
@@ -214,13 +214,18 @@ Vector2 BuildWorld::IsFoxNearby(Rabbit* rabbit, float radius)
 			float distToFox = Vector2Distance(rabbit->GetPosition(), m_foxList[i]->GetPosition());
 
 			if (distToFox < radius)
-			{
 				return m_foxList[i]->GetPosition();
-			}
 		}
 	}
 
 	return { 0, 0 };
+}
+
+void BuildWorld::AddRabbit(Vector2 pos)
+{
+	Rabbit* rabbit = new Rabbit();
+	rabbit->SetPosition({ pos.x * (float)m_tileSize + 16, pos.y * (float)m_tileSize + 16 });
+	m_rabbitList.push_back(rabbit);
 }
 
 void BuildWorld::RemoveRabbitFromList(Rabbit* removeRabbit)
@@ -230,9 +235,7 @@ void BuildWorld::RemoveRabbitFromList(Rabbit* removeRabbit)
 	for (auto rabbit : m_rabbitList)
 	{
 		if (rabbit != removeRabbit)
-		{
-			m_rabbitList.push_back(rabbit);
-		}
+			tempList.push_back(rabbit);
 	}
 
 	m_rabbitList.clear();
@@ -240,7 +243,5 @@ void BuildWorld::RemoveRabbitFromList(Rabbit* removeRabbit)
 	delete removeRabbit;
 
 	for (auto rabbit : tempList)
-	{
 		m_rabbitList.push_back(rabbit);
-	}
 }

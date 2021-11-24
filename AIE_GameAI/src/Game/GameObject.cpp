@@ -76,6 +76,10 @@ Behaviour* GameObject::GetBehaviour()
 {
 	return m_behaviour;
 }
+Behaviour* GameObject::GetPreviousBehaviour()
+{
+	return m_previousBehviour;
+}
 
 // Setters
 void GameObject::SetPosition(const Vector2& pos)
@@ -100,5 +104,10 @@ void GameObject::SetMaxForce(const float& force)
 }
 void GameObject::SetBehaviour(Behaviour* behaviour)
 {
+	m_previousBehviour = m_behaviour;
 	m_behaviour = behaviour;
+}
+void GameObject::SetPreviousBehaviour(Behaviour* behaviour)
+{
+	m_previousBehviour = behaviour;
 }
