@@ -3,6 +3,7 @@
 #include "./Game/Behaviour/FleeBehaviour.h"
 #include "./Game/Behaviour/FollowPathBehaviour.h"
 #include "./Game/AssetManager.h"
+#include "./Game/BuildWord.h"
 
 Rabbit::Rabbit(BuildWorld* world)
 {

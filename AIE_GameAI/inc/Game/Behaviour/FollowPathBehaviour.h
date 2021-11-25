@@ -1,10 +1,9 @@
 #pragma once
 
+#include "./Game/Graph.h"
 #include "./Game/Behaviour/Behaviour.h"
 #include <functional>
 #include <raymath.h>
-#include "./Game/Graph2D.h"
-#include "./Game/Graph.h"
 
 class BuildWorld;
 class Graph2D;

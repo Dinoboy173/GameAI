@@ -4,6 +4,7 @@
 #include "./Game/Behaviour/FollowPathBehaviour.h"
 #include "./Game/AssetManager.h"
 #include "./Game/Rabbit.h"
+#include "./Game/BuildWord.h"
 #include <iostream>
 
 Fox::Fox(BuildWorld* world)

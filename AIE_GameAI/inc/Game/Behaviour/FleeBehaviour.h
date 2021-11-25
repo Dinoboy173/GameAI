@@ -1,8 +1,6 @@
 #pragma once
 
 #include "./Game/Behaviour/Behaviour.h"
-#include "./Game/BuildWord.h"
-#include "./Game/Graph.h"
 #include "raymath.h"
 #include <functional>
 

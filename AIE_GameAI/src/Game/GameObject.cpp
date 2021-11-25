@@ -1,5 +1,6 @@
 #include "./Game/GameObject.h"
 #include "./Game/Behaviour/Behaviour.h"
+#include "./Game/AssetManager.h"
 
 GameObject::GameObject()
 {

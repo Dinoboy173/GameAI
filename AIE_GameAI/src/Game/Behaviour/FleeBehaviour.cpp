@@ -1,6 +1,7 @@
 #include "./Game/Behaviour/FleeBehaviour.h"
 #include "./Game/GameObject.h"
 #include "./Game/Graph2D.h"
+#include "./Game/BuildWord.h"
 
 FleeBehaviour::FleeBehaviour(BuildWorld* world) : Behaviour()
 {

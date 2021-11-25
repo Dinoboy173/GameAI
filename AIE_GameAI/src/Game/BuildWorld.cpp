@@ -2,7 +2,6 @@
 #include "./Game/AssetManager.h"
 #include "./Game/Rabbit.h"
 #include "./Game/Fox.h"
-#include "raylib.h"
 #include <iostream>
 #include "./Game/Graph2D.h"
 

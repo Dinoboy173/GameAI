@@ -3,9 +3,6 @@
 #include "./Game/Behaviour/Behaviour.h"
 #include "raymath.h"
 #include <functional>
-#include "./Game/Graph.h"
-#include "./Game/BuildWord.h"
-#include "./Menu/Application.h"
 
 class BuildWorld;
 class Application;

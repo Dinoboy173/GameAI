@@ -1,11 +1,14 @@
 #include "./Game/Behaviour/WanderBehaviour.h"
 #include "./Game/GameObject.h"
 #include "./Game/Graph2D.h"
+#include "./Game/BuildWord.h"
+#include "./Menu/Application.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <random>
 #include <time.h>
 #include <iostream>
+
 
 WanderBehaviour::WanderBehaviour(BuildWorld* world) : Behaviour()
 {
@@ -50,7 +53,7 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 		}
 
 		// check for null
-		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 20);
+		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 32);
 
 		if (closestWPNode != nullptr)
 			wanderPoint = closestWPNode->data;

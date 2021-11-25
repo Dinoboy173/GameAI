@@ -1,6 +1,7 @@
 #include "./Game/Behaviour/FollowPathBehaviour.h"
 #include "./Game/GameObject.h"
 #include "./Game/BuildWord.h"
+#include "./Game/Graph2D.h"
 
 FollowPathBehaviour::FollowPathBehaviour() : Behaviour()
 {

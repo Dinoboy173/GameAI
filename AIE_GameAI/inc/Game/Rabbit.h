@@ -1,7 +1,6 @@
 #pragma once
 
 #include "./Game/GameObject.h"
-#include "./Game/BuildWord.h"
 
 class WanderBehaviour;
 class FleeBehaviour;
