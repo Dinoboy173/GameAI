@@ -1,28 +1,33 @@
 #pragma once
 
 #include "./Game/GameObject.h"
+#include "./Game/BuildWord.h"
 
 class WanderBehaviour;
 class FleeBehaviour;
+class FollowPathBehaviour;
+
 class BuildWorld;
 
 class Rabbit : public GameObject
 {
 public:
 
-	Rabbit();
+	Rabbit(BuildWorld* world);
 	virtual ~Rabbit();
 
-	virtual void Update(float dt, BuildWorld* world);
+	virtual void Update(float dt);
 	virtual void Draw();
 
-	Behaviour* CalculateDesiredBehaviour(BuildWorld* world, Vector2 foxPos);
+	Behaviour* CalculateDesiredBehaviour(Vector2 foxPos);
 
 protected:
 
+	BuildWorld* m_world = nullptr;
+
 	WanderBehaviour* m_wanderBehaviour;
 	FleeBehaviour* m_fleeBehaviour;
-	BuildWorld* m_world;
+	FollowPathBehaviour* m_followPathBehaviour;
 
 private:
 

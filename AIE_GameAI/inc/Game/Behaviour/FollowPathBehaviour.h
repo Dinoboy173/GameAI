@@ -29,6 +29,9 @@ public:
 
 	void OnArrive(std::function<void()> callback);
 
+	void SetGraph(Graph2D* graph);
+	Graph2D* GetGraph();
+
 protected:
 
 	Vector2 m_target;

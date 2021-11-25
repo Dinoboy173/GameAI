@@ -86,3 +86,13 @@ void FollowPathBehaviour::OnArrive(std::function<void()> callback)
 {
 	m_onArrivedFn = callback;
 }
+
+void FollowPathBehaviour::SetGraph(Graph2D* graph)
+{
+	m_graph = graph;
+}
+
+Graph2D* FollowPathBehaviour::GetGraph()
+{
+	return m_graph;
+}

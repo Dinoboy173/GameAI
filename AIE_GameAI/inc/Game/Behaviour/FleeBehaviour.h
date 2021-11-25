@@ -1,14 +1,18 @@
 #pragma once
 
 #include "./Game/Behaviour/Behaviour.h"
+#include "./Game/BuildWord.h"
+#include "./Game/Graph.h"
 #include "raymath.h"
 #include <functional>
+
+class BuildWorld;
 
 class FleeBehaviour : public Behaviour
 {
 public:
 
-	FleeBehaviour();
+	FleeBehaviour(BuildWorld* world);
 	virtual ~FleeBehaviour();
 
 	virtual void Update(GameObject* obj, float deltaTime);
@@ -29,6 +33,8 @@ protected:
 	int m_windowSize = 1024;
 
 	std::function<void()> m_onExitedFn;
+
+	BuildWorld* m_world = nullptr;
 
 private:
 };

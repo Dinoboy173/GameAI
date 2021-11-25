@@ -7,9 +7,10 @@
 #include <time.h>
 #include <iostream>
 
-WanderBehaviour::WanderBehaviour() : Behaviour()
+WanderBehaviour::WanderBehaviour(BuildWorld* world) : Behaviour()
 {
 	m_target = Vector2{ 0, 0 };
+	m_world = world;
 }
 WanderBehaviour::~WanderBehaviour()
 {
@@ -47,6 +48,12 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 		{
 			return;
 		}
+
+		// check for null
+		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 20);
+
+		if (closestWPNode != nullptr)
+			wanderPoint = closestWPNode->data;
 
 		SetTarget(wanderPoint);
 		m_wanderCenter = wanderCenter;

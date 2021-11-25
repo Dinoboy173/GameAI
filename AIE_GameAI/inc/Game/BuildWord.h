@@ -1,9 +1,9 @@
-#include "raylib.h"
-#include "AssetManager.h"
-#include "./Game/Rabbit.h"
-#include "./Game/Fox.h"
-#include "./Game/Graph2D.h"
+#pragma once
 
+#include "raylib.h"
+#include <vector>
+
+class GameObject;
 class Graph2D;
 class Rabbit;
 class Fox;
@@ -57,8 +57,8 @@ private:
 
 	bool editingList = false;
 
-	int m_numRows = ASSETS->imgGameMapInfo.height;
-	int m_numCols = ASSETS->imgGameMapInfo.width;
+	int m_numRows;
+	int m_numCols;
 
 	float m_tileSize = 32.0f;
 

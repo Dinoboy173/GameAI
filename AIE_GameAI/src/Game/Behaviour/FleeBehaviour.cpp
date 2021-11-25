@@ -1,9 +1,10 @@
 #include "./Game/Behaviour/FleeBehaviour.h"
 #include "./Game/GameObject.h"
+#include "./Game/Graph2D.h"
 
-FleeBehaviour::FleeBehaviour() : Behaviour()
+FleeBehaviour::FleeBehaviour(BuildWorld* world) : Behaviour()
 {
-
+	m_world = world;
 }
 
 FleeBehaviour::~FleeBehaviour()
@@ -30,18 +31,23 @@ void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 		targetForcePos.x -= targetForcePos.x;
 		targetForcePos.y -= 20;
 	}
-
+	
 	if (targetForcePos.y <= 0 ||
 		targetForcePos.y >= m_windowSize)
 	{
 		targetForcePos.x -= 20;
 		targetForcePos.y -= targetForcePos.y;
 	}
-
+	
 	if (targetForcePos.x <= 1 && targetForcePos.y <= 1)
 	{
 		targetForcePos = Vector2{ 20, 20 };
 	}
+
+	auto closestWPNode = m_world->m_graph->GetClosestNode(targetForcePos, 20);
+
+	if (closestWPNode != nullptr)
+		targetForcePos = closestWPNode->data;
 
 	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
 

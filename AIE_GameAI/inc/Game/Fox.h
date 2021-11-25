@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./Game/GameObject.h"
+#include "./Game/BuildWord.h"
 
 class WanderBehaviour;
 class SeekBehaviour;
@@ -13,17 +14,17 @@ class Fox : public GameObject
 {
 public:
 
-	Fox();
+	Fox(BuildWorld* world);
 	virtual ~Fox();
 
-	virtual void Update(float dt, BuildWorld* world);
+	virtual void Update(float dt);
 	virtual void Draw();
 
 	Behaviour* CalculateDesiredBehaviour(BuildWorld* world);
 
 protected:
 
-	BuildWorld* m_world;
+	BuildWorld* m_world = nullptr;
 
 	WanderBehaviour* m_wanderBehaviour;
 	SeekBehaviour* m_seekBehaviour;

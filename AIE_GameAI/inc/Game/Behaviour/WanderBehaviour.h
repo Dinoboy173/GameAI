@@ -14,7 +14,7 @@ class WanderBehaviour : public Behaviour
 {
 public:
 
-	WanderBehaviour();
+	WanderBehaviour(BuildWorld* world);
 	virtual ~WanderBehaviour();
 
 	virtual void Update(GameObject* obj, float deltaTime);
@@ -35,7 +35,7 @@ protected:
 	Vector2 m_wanderCenter = { 0.0f, 0.0f };
 	Vector2 m_wanderPoint = { 0.0f, 0.0f };
 
-	BuildWorld* m_world;
+	BuildWorld* m_world = nullptr;
 
 private:
 };

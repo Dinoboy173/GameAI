@@ -4,7 +4,9 @@
 #include "./Game/Fox.h"
 #include "raylib.h"
 #include <iostream>
-#include "./Game/Graph.h"
+#include "./Game/Graph2D.h"
+
+// clean up headers and #includes
 
 BuildWorld::BuildWorld()
 {
@@ -18,6 +20,9 @@ BuildWorld::~BuildWorld()
 
 void BuildWorld::Load()
 {
+	m_numRows = ASSETS->imgGameMapInfo.height;
+	m_numCols = ASSETS->imgGameMapInfo.width;
+
 	std::cout << "Loading World\n";
 
 	LoadGraph();
@@ -30,13 +35,13 @@ void BuildWorld::Load()
 
 			if (color == C_YELLOW)
 			{
-				Rabbit* rabbit = new Rabbit();
+				Rabbit* rabbit = new Rabbit(this);
 				rabbit->SetPosition({ x * (float)m_tileSize + 16, y * (float)m_tileSize + 16});
 				m_rabbitList.push_back(rabbit);
 			}
 			else if (color == C_RED)
 			{
-				Fox* fox = new Fox();
+				Fox* fox = new Fox(this);
 				fox->SetPosition({ x * (float)m_tileSize + 16, y * (float)m_tileSize + 16 });
 				m_foxList.push_back(fox);
 			}
@@ -54,7 +59,7 @@ void BuildWorld::Unload()
 
 void BuildWorld::LoadGraph()
 {
-	m_graph = new Graph2D;
+	m_graph = new Graph2D();
 
 	m_numRows = ASSETS->imgGameMapInfo.height;
 	m_numCols = ASSETS->imgGameMapInfo.width;
@@ -99,12 +104,12 @@ void BuildWorld::Update(float dt)
 {
 	for (auto i : m_rabbitList)
 	{
-		i->Update(dt, this);
+		i->Update(dt);
 	}
 
 	for (auto i : m_foxList)
 	{
-		i->Update(dt, this);
+		i->Update(dt);
 	}
 }
 
@@ -221,12 +226,12 @@ Vector2 BuildWorld::IsFoxNearby(Rabbit* rabbit, float radius)
 	return { 0, 0 };
 }
 
-void BuildWorld::AddRabbit(Vector2 pos)
-{
-	Rabbit* rabbit = new Rabbit();
-	rabbit->SetPosition({ pos.x * (float)m_tileSize + 16, pos.y * (float)m_tileSize + 16 });
-	m_rabbitList.push_back(rabbit);
-}
+// void BuildWorld::AddRabbit(Vector2 pos)
+// {
+// 	Rabbit* rabbit = new Rabbit();
+// 	rabbit->SetPosition({ pos.x * (float)m_tileSize + 16, pos.y * (float)m_tileSize + 16 });
+// 	m_rabbitList.push_back(rabbit);
+// }
 
 void BuildWorld::RemoveRabbitFromList(Rabbit* removeRabbit)
 {

@@ -6,28 +6,22 @@
 #include "./Game/Rabbit.h"
 #include <iostream>
 
-Fox::Fox()
+Fox::Fox(BuildWorld* world)
 {
+	m_world = world;
+
 	// wander
-	m_wanderBehaviour = new WanderBehaviour();
+	m_wanderBehaviour = new WanderBehaviour(world);
 	m_wanderBehaviour->SetTargetRadius(200.0f);
 
 	// seek
 	m_seekBehaviour = new SeekBehaviour();
 	m_seekBehaviour->SetTargetRadius(m_seekRadius);
-	m_seekBehaviour->OnArrive([this]()
-	{
-		SetBehaviour(m_wanderBehaviour);
-	});
 
 	// TODO 1: create followPathBehaviour
 	// follow path
 	m_followPathBehaviour = new FollowPathBehaviour();
 	m_followPathBehaviour->SetTargetRadius(10.0f);
-	m_followPathBehaviour->OnArrive([this]()
-		{
-			m_followPathBehaviour->NextNode();
-		});
 
 	// TODO 2: set a hardcoded path
 
@@ -51,11 +45,11 @@ Fox::~Fox()
 	delete m_wanderBehaviour;
 }
 
-void Fox::Update(float dt, BuildWorld* world)
+void Fox::Update(float dt)
 {
 	// auto m_world->IsRabbitNearby();
 
-	Vector2 rabbit = world->IsRabbitNearby(this, m_seekRadius);
+	Vector2 rabbit = m_world->IsRabbitNearby(this, m_seekRadius);
 
 	if (rabbit.x != 0 && rabbit.y != 0)
 	{
@@ -66,6 +60,13 @@ void Fox::Update(float dt, BuildWorld* world)
 				SetBehaviour(m_wanderBehaviour);
 			});
 	}
+
+	// SetBehaviour(m_followPathBehaviour);
+	// m_followPathBehaviour->SetGraph(world->m_graph);
+	// m_followPathBehaviour->OnArrive([this]()
+	// 	{
+	// 		m_followPathBehaviour->NextNode();
+	// 	});
 
 	// auto desiredBehaviour = CalculateDesiredBehaviour();
 	// if (desiredBehaviour != GetBehaviour())
