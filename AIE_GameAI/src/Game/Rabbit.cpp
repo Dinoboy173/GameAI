@@ -91,6 +91,8 @@ void Rabbit::Draw()
 {
 	bool behaviourDebug = false;
 
+	// draw velocity line
+
 	if (IsKeyDown(KeyboardKey(KEY_F3)))
 		GetBehaviour()->Draw(this);
 
