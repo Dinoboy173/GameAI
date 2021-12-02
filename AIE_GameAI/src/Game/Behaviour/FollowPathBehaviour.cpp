@@ -2,6 +2,7 @@
 #include "./Game/GameObject.h"
 #include "./Game/BuildWord.h"
 #include "./Game/Graph2D.h"
+#include <functional>
 
 FollowPathBehaviour::FollowPathBehaviour() : Behaviour()
 {
@@ -34,33 +35,33 @@ void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
 
 void FollowPathBehaviour::Draw(GameObject* obj)
 {
-	// Draw all connections
-	for (auto node : m_graph->GetNodes())
-	{
-		for (auto connection : node->connections)
-		{
-			DrawLine(node->data.x, node->data.y, connection.to->data.x, connection.to->data.y, GRAY);
-		}
-	}
-
-	// Draw all nodes
-	for (auto node : m_graph->GetNodes())
-	{
-		DrawCircle(node->data.x, node->data.y, 8, LIGHTGRAY);
-		DrawCircleLines(node->data.x, node->data.y, 8, GRAY);
-	}
+	// // Draw all connections
+	// for (auto node : m_graph->GetNodes())
+	// {
+	// 	for (auto connection : node->connections)
+	// 	{
+	// 		DrawLine(node->data.x, node->data.y, connection.to->data.x, connection.to->data.y, GRAY);
+	// 	}
+	// }
+	// 
+	// // Draw all nodes
+	// for (auto node : m_graph->GetNodes())
+	// {
+	// 	DrawCircle(node->data.x, node->data.y, 8, LIGHTGRAY);
+	// 	DrawCircleLines(node->data.x, node->data.y, 8, GRAY);
+	// }
 }
 
 void FollowPathBehaviour::NextNode()
 {
-	int size = m_graph->GetNodes().size();
-
-	if (currentNode < size - 1)
-		currentNode++;
+	int size = m_nodes.size();
+	
+	if (m_currentNode < size - 1)
+		m_currentNode++;
 	else
-		currentNode = 0;
-
-	m_target = m_graph->GetNodes().at(currentNode)->data;
+		m_currentNode = 0;
+	
+	m_target = m_nodes[m_currentNode]->data;
 }
 
 const Vector2& FollowPathBehaviour::GetTarget() const
@@ -96,4 +97,9 @@ void FollowPathBehaviour::SetGraph(Graph2D* graph)
 Graph2D* FollowPathBehaviour::GetGraph()
 {
 	return m_graph;
+}
+
+void FollowPathBehaviour::SetPath(std::vector<Graph<Vector2, float>::Node*> nodes)
+{
+	m_nodes = nodes;
 }

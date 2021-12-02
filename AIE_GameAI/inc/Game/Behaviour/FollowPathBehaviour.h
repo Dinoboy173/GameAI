@@ -2,8 +2,8 @@
 
 #include "./Game/Graph.h"
 #include "./Game/Behaviour/Behaviour.h"
-#include <functional>
 #include <raymath.h>
+#include <vector>
 
 class BuildWorld;
 class Graph2D;
@@ -31,14 +31,16 @@ public:
 	void SetGraph(Graph2D* graph);
 	Graph2D* GetGraph();
 
+	void SetPath(std::vector<Graph<Vector2, float>::Node*> nodes);
+
 protected:
 
 	Vector2 m_target;
 	float m_targetRadius = 1.0f;
-	int currentNode = 0;
+	int m_currentNode = 0;
 
 	// list of nodes
-	std::list<Graph<Vector2, float>::Node*> nodes;
+	std::vector<Graph<Vector2, float>::Node*> m_nodes;
 
 private:
 

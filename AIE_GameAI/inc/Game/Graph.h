@@ -194,7 +194,7 @@ public:
                 {
                     // child node on stack already
                     // but we can get to it easier
-                    childNode->parent = pfNode;
+                    childPFNode->parent = pfNode;
                     childPFNode->gScore = gScore;
                     childPFNode->hScore = hScore;
                     childPFNode->depth = depth;

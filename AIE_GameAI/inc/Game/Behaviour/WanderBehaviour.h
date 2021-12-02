@@ -6,6 +6,7 @@
 
 class BuildWorld;
 class Application;
+class FollowPathBehaviour;
 
 class WanderBehaviour : public Behaviour
 {
@@ -33,6 +34,8 @@ protected:
 	Vector2 m_wanderPoint = { 0.0f, 0.0f };
 
 	BuildWorld* m_world = nullptr;
+
+	FollowPathBehaviour* m_followPathBehaviour;
 
 private:
 };

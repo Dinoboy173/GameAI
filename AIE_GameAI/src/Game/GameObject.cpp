@@ -1,6 +1,8 @@
 #include "./Game/GameObject.h"
 #include "./Game/Behaviour/Behaviour.h"
 #include "./Game/AssetManager.h"
+#include "./Game/Graph.h"
+#include <functional>
 
 GameObject::GameObject()
 {
@@ -81,6 +83,14 @@ Behaviour* GameObject::GetPreviousBehaviour()
 {
 	return m_previousBehviour;
 }
+std::vector<Graph<Vector2, float>::Node*> GameObject::GetNodes()
+{
+	return m_nodes;
+}
+bool GameObject::IsFollowPath()
+{
+	return m_doFollowPath;
+}
 
 // Setters
 void GameObject::SetPosition(const Vector2& pos)
@@ -111,4 +121,12 @@ void GameObject::SetBehaviour(Behaviour* behaviour)
 void GameObject::SetPreviousBehaviour(Behaviour* behaviour)
 {
 	m_previousBehviour = behaviour;
+}
+void GameObject::SetNodes(std::vector<Graph<Vector2, float>::Node*> nodes)
+{
+	m_nodes = nodes;
+}
+void GameObject::DoFollowPath(bool doFollowPath)
+{
+	m_doFollowPath = doFollowPath;
 }

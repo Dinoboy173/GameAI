@@ -56,13 +56,27 @@ void Rabbit::Update(float dt)
 				SetBehaviour(m_wanderBehaviour);
 			});
 	}
-	
-	// SetBehaviour(m_followPathBehaviour);
-	// m_followPathBehaviour->SetGraph(world->m_graph);
-	// m_followPathBehaviour->OnArrive([this]()
-	// 	{
-	// 		m_followPathBehaviour->NextNode();
-	// 	});
+
+	if (m_doFollowPath) // do same for fox
+	{
+		SetBehaviour(m_followPathBehaviour);
+		m_followPathBehaviour->SetPath(m_nodes);
+		m_followPathBehaviour->SetTarget(m_nodes[0]->data);
+		m_followPathBehaviour->OnArrive([this]()
+			{
+				if (m_followPathBehaviour->GetTarget().x != m_nodes.back()->data.x &&
+					m_followPathBehaviour->GetTarget().y != m_nodes.back()->data.y)
+				{
+					m_followPathBehaviour->NextNode();
+				}
+				else
+				{
+					SetBehaviour(m_wanderBehaviour);
+				}
+			});
+
+		DoFollowPath(false);
+	}
 
 	// have behaviours send info to follow path
 
@@ -81,4 +95,9 @@ void Rabbit::Draw()
 		GetBehaviour()->Draw(this);
 
 	GameObject::Draw(ASSETS->imgRabbit, ASSETS->rabbit, m_position.x, m_position.y);
+}
+
+void Rabbit::SetBehaviourFollow()
+{
+	
 }

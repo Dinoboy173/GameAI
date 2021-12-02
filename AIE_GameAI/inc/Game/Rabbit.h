@@ -20,6 +20,8 @@ public:
 
 	Behaviour* CalculateDesiredBehaviour(Vector2 foxPos);
 
+	void SetBehaviourFollow();
+
 protected:
 
 	BuildWorld* m_world = nullptr;

@@ -30,8 +30,6 @@ Graph2D::Node* Graph2D::GetClosestNode(Vector2 position, float withinRadius)
 
 	if (nodes.empty())
 		return nullptr;
-
-	// TODO: iterate over nodes - get the one that is closest to the position variable and return it.
 	
 	Graph2D::Node* closestNode = nullptr;
 	float closestNodeDist = NULL;

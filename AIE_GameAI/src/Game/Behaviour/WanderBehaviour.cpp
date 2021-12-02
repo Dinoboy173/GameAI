@@ -1,4 +1,5 @@
 #include "./Game/Behaviour/WanderBehaviour.h"
+#include "./Game/Behaviour/FollowPathBehaviour.h"
 #include "./Game/GameObject.h"
 #include "./Game/Graph2D.h"
 #include "./Game/BuildWord.h"
@@ -52,20 +53,35 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 			return;
 		}
 
-		// check for null
-		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 32);
+		auto startNode = m_world->m_graph->GetClosestNode(obj->GetPosition(), 40);
+
+		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 128);
+
+		auto func = [=](auto node) {return node == closestWPNode; };
 
 		if (closestWPNode != nullptr)
-			wanderPoint = closestWPNode->data;
+		{
+			auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, startNode, func);
 
-		SetTarget(wanderPoint);
-		m_wanderCenter = wanderCenter;
-		m_wanderPoint = wanderPoint;
+			std::vector<Graph<Vector2, float>::Node*> vNodes;
+
+			for (const auto& node : nodes)
+				vNodes.push_back(node);
+
+			obj->SetNodes(vNodes);
+			obj->DoFollowPath(true);
+
+			// wanderPoint = closestWPNode->data;
+		}
+
+		// SetTarget(wanderPoint);
+		// m_wanderCenter = wanderCenter;
+		// m_wanderPoint = wanderPoint;
 	}
 
-	Vector2 wanderTotalDistance = Vector2Scale(Vector2Normalize(Vector2Subtract(m_wanderPoint, obj->GetPosition())), obj->GetMaxForce());
-
-	obj->ApplyForce(wanderTotalDistance);
+	// Vector2 wanderTotalDistance = Vector2Scale(Vector2Normalize(Vector2Subtract(m_wanderPoint, obj->GetPosition())), obj->GetMaxForce());
+	// 
+	// obj->ApplyForce(wanderTotalDistance);
 }
 
 void WanderBehaviour::Draw(GameObject* obj)
