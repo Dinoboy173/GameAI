@@ -5,11 +5,13 @@
 
 #include <functional>
 
+class BuildWorld;
+
 class SeekBehaviour : public Behaviour
 {
 public:
 
-	SeekBehaviour();
+	SeekBehaviour(BuildWorld* world);
 	virtual ~SeekBehaviour();
 
 	virtual void Update(GameObject* obj, float deltaTime);
@@ -30,6 +32,8 @@ protected:
 	int m_windowSize = 1024;
 
 	std::function<void()> m_onArrivedFn;
+
+	BuildWorld* m_world;
 
 private:
 };

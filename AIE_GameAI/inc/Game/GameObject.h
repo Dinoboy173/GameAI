@@ -34,9 +34,10 @@ public:
 	Behaviour* GetPreviousBehaviour();
 
 	Graph<Vector2, float>::Node* GetStartNode();
-
 	std::list<Graph<Vector2, float>::Node*> GetNodes();
+
 	bool IsFollowPath();
+	bool GetIsChangeBehaviour();
 
 	// Setters
 	void SetPosition(const Vector2& pos);
@@ -50,9 +51,10 @@ public:
 	void SetPreviousBehaviour(Behaviour* behaviour);
 
 	void SetStartNode(Graph<Vector2, float>::Node* startNode);
-
 	void SetNodes(std::list<Graph<Vector2, float>::Node*> nodes);
+
 	void DoFollowPath(bool doFollowPath);
+	void SetIsChangeBehaviour(bool isChangingBehaviour);
 
 protected:
 
@@ -66,7 +68,9 @@ protected:
 	Graph<Vector2, float>::Node* m_startNode;
 
 	std::list<Graph<Vector2, float>::Node*> m_nodes;
+
 	bool m_doFollowPath = false;
+	bool m_isChangingBehaviour = false;
 
 	Behaviour* m_behaviour = nullptr;
 	Behaviour* m_previousBehviour = nullptr;

@@ -1,9 +1,12 @@
 #include "./Game/Behaviour/SeekBehaviour.h"
 #include "./Game/GameObject.h"
+#include "./Game/BuildWord.h"
+#include "./Game/Graph2D.h"
 
-SeekBehaviour::SeekBehaviour() : Behaviour()
+SeekBehaviour::SeekBehaviour(BuildWorld* world) : Behaviour()
 {
 	m_target = {0, 0};
+	m_world = world;
 }
 
 SeekBehaviour::~SeekBehaviour()
@@ -32,6 +35,20 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 		targetForcePos.x -= targetForcePos.x;
 		targetForcePos.y -= targetForcePos.y;
 	}
+
+	auto closestWPNode = m_world->m_graph->GetClosestNode(m_target, 128);
+
+	auto func = [=](auto node) {return node == closestWPNode; };
+
+	if (closestWPNode != nullptr)
+	{
+		auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, obj->GetStartNode(), func);
+
+		obj->SetNodes(nodes);
+		obj->DoFollowPath(true);
+	}
+	else
+		return;
 
 	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
 

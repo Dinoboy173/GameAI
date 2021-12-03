@@ -39,24 +39,35 @@ void Rabbit::Update(float dt)
 {
 	//auto desiredBehaviour = CalculateDesiredBehaviour(world);
 
+	if (GetPosition().x < 0 || GetPosition().y < 0)
+		SetPosition({ 48, 48 });
+
+	if (GetPosition().x > 1024 || GetPosition().y > 1024)
+		SetPosition({ 976, 976 });
+
 	Vector2 fox = m_world->IsFoxNearby(this, m_fleeRadius);
 	Vector2 rabbit = m_world->IsRabbitNearby(this, m_mateRadius);
 
 	float distToFox = Vector2Distance(GetPosition(), fox);
 	float distToRabbit = Vector2Distance(GetPosition(), rabbit);
 
+	// flee behaviour
 	if (fox.x != 0 && fox.y != 0)
 	{
+		SetIsChangeBehaviour(true);
 		SetBehaviour(m_fleeBehaviour);
 		m_fleeBehaviour->SetTarget(fox);
 		m_fleeBehaviour->OnExit([this]()
 			{
+				SetIsChangeBehaviour(true);
 				SetBehaviour(m_wanderBehaviour);
 			});
 	}
-
-	if (m_doFollowPath) // do same for fox
+	
+	// follow path behaviour
+	if (m_doFollowPath)
 	{
+		SetIsChangeBehaviour(true);
 		SetBehaviour(m_followPathBehaviour);
 		m_followPathBehaviour->SetPath(m_nodes);
 		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
@@ -65,6 +76,7 @@ void Rabbit::Update(float dt)
 				if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
 					m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
 				{
+					SetIsChangeBehaviour(true);
 					m_followPathBehaviour->m_hasStart = false;
 					SetBehaviour(GetPreviousBehaviour());
 				}
@@ -72,6 +84,8 @@ void Rabbit::Update(float dt)
 				{
 					m_followPathBehaviour->NextNode(this);
 				}
+
+				DoFollowPath(false);
 			});
 
 		DoFollowPath(false);
@@ -79,13 +93,17 @@ void Rabbit::Update(float dt)
 
 	// have behaviours send info to follow path
 
-	if (distToFox < 16)
-		m_world->RemoveRabbitFromList(this);
+	GameObject::Update(dt);
+
+	// if (distToFox < 16)
+	// {
+	// 	m_followPathBehaviour->m_hasStart = false;
+	// 	m_world->RemoveRabbitFromList(this);
+	// }
+		
 
 	//if (distToRabbit < m_mateRadius)
 	//	world->AddRabbit(GetPosition());
-
-	GameObject::Update(dt);
 }
 
 void Rabbit::Draw()

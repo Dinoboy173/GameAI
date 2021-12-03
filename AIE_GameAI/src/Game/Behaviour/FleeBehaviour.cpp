@@ -19,6 +19,8 @@ void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 	if (distToTarget > m_targetRadius)
 		if (m_onExitedFn)
 			m_onExitedFn();
+
+	obj->SetPreviousBehaviour(this);
 	
 	Vector2 heading = Vector2Add(obj->GetPosition(), obj->GetVelocity());
 
@@ -26,33 +28,42 @@ void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
 	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
 	
-	if (targetForcePos.x <= 0 ||
-		targetForcePos.x >= m_windowSize)
-	{
-		targetForcePos.x -= targetForcePos.x;
-		targetForcePos.y -= 20;
-	}
+	// if (targetForcePos.x <= 0 ||
+	// 	targetForcePos.x >= m_windowSize)
+	// {
+	// 	targetForcePos.x -= targetForcePos.x;
+	// 	targetForcePos.y -= 20;
+	// }
+	// 
+	// if (targetForcePos.y <= 0 ||
+	// 	targetForcePos.y >= m_windowSize)
+	// {
+	// 	targetForcePos.x -= 20;
+	// 	targetForcePos.y -= targetForcePos.y;
+	// }
+	// 
+	// if (targetForcePos.x <= 1 && targetForcePos.y <= 1)
+	// {
+	// 	targetForcePos = Vector2{ 20, 20 };
+	// }
 	
-	if (targetForcePos.y <= 0 ||
-		targetForcePos.y >= m_windowSize)
-	{
-		targetForcePos.x -= 20;
-		targetForcePos.y -= targetForcePos.y;
-	}
-	
-	if (targetForcePos.x <= 1 && targetForcePos.y <= 1)
-	{
-		targetForcePos = Vector2{ 20, 20 };
-	}
+	// Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
 
-	auto closestWPNode = m_world->m_graph->GetClosestNode(targetForcePos, 20);
+	auto closestWPNode = m_world->m_graph->GetClosestNode(m_target, 128);
+
+	auto func = [=](auto node) {return node == closestWPNode; };
 
 	if (closestWPNode != nullptr)
-		targetForcePos = closestWPNode->data;
+	{
+		auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, obj->GetStartNode(), func);
 
-	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
+		obj->SetNodes(nodes);
+		obj->DoFollowPath(true);
+	}
+	else
+		return;
 
-	obj->ApplyForce(forceDir);
+	//obj->ApplyForce(forceDir);
 }
 
 void FleeBehaviour::Draw(GameObject* obj)

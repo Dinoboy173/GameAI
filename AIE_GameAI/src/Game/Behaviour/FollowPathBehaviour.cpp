@@ -13,6 +13,12 @@ FollowPathBehaviour::~FollowPathBehaviour()
 {
 	delete m_graph;
 	m_graph = nullptr;
+
+	for (auto node : m_nodes)
+	{
+		delete node;
+		node = nullptr;
+	}
 }
 
 void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
@@ -49,21 +55,32 @@ void FollowPathBehaviour::Draw(GameObject* obj)
 
 void FollowPathBehaviour::NextNode(GameObject* obj)
 {
+	if (m_nodes.empty())
+		return;
+
 	if (!m_hasStart)
 	{
 		m_currentNode = m_nodes.begin();
 		m_hasStart = true;
 	}
 	
-	if (m_currentNode == m_nodes.end())
-		m_currentNode = m_nodes.begin();
-	else
-		m_currentNode++;
+	if (!obj->GetIsChangeBehaviour()) // turn follow behaviour off before changing to another behaviour
+	{
+		if (m_currentNode == m_nodes.end())
+			m_currentNode = m_nodes.begin();
+		else
+			m_currentNode++;
 
-	Graph<Vector2, float>::Node* node = *m_currentNode;
+		Graph<Vector2, float>::Node* node = *m_currentNode;
 
-	obj->SetStartNode(node);
-	m_target = node->data;
+		obj->SetStartNode(node);
+		m_target = node->data;
+	}
+	
+	if (obj->GetIsChangeBehaviour())
+	{
+		obj->SetIsChangeBehaviour(false);
+	}
 }
 
 const Vector2& FollowPathBehaviour::GetTarget() const

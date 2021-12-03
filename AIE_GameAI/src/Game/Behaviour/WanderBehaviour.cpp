@@ -10,7 +10,6 @@
 #include <time.h>
 #include <iostream>
 
-
 WanderBehaviour::WanderBehaviour(BuildWorld* world) : Behaviour()
 {
 	m_target = Vector2{ 0, 0 };
@@ -25,7 +24,12 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToWp = Vector2Length(Vector2Subtract(m_wanderPoint, obj->GetPosition()));
 
-	if (distToWp < 10 || Vector2Length(obj->GetVelocity()) == 0 || IsKeyPressed(KEY_Q) || obj->GetPreviousBehaviour() != this)
+	if (distToWp < 10 ||
+		Vector2Length(obj->GetVelocity()) == 0 ||
+		IsKeyPressed(KEY_Q) ||
+		obj->GetPreviousBehaviour() != this ||
+		(obj->GetVelocity().x < 5 && obj->GetVelocity().x > -5 ||
+			obj->GetVelocity().y < 5 && obj->GetVelocity().y > -5))
 	{
 		obj->SetPreviousBehaviour(this);
 
@@ -52,6 +56,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 		{
 			return;
 		}
+
+		m_wanderPoint = wanderPoint;
 
 		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 128);
 
