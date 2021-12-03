@@ -49,14 +49,6 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 		Vector2 wanderPoint = Vector2Add(wanderCenter, displace);
 
-		if (wanderPoint.x <= 0 ||
-			wanderPoint.x >= m_windowSize ||
-			wanderPoint.y <= 0 ||
-			wanderPoint.y >= m_windowSize)
-		{
-			return;
-		}
-
 		m_wanderPoint = wanderPoint;
 
 		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 128);
@@ -77,8 +69,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 
 void WanderBehaviour::Draw(GameObject* obj)
 {
-	DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
-	DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
+	// DrawCircleV(m_wanderCenter, m_targetRadius, { 255, 0, 0, 128 });
+	// DrawCircleV(m_wanderPoint, 5, { 0, 0, 0, 128 });
 }
 
 const Vector2& WanderBehaviour::GetTarget() const

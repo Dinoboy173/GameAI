@@ -136,6 +136,7 @@ void GameObject::SetStartNode(Graph<Vector2, float>::Node* startNode)
 }
 void GameObject::SetNodes(std::list<Graph<Vector2, float>::Node*> nodes)
 {
+	m_nodes.clear();
 	m_nodes = nodes;
 }
 void GameObject::DoFollowPath(bool doFollowPath)

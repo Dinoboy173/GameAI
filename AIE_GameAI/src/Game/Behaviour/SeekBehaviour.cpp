@@ -57,8 +57,8 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 
 void SeekBehaviour::Draw(GameObject* obj)
 {
-	DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
-	DrawCircleV(m_target, 5, { 0, 0, 0, 128 });
+	// DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
+	// DrawCircleV(m_target, 5, { 0, 0, 0, 128 });
 
 	// DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
 	// DrawCircle(m_target.x, m_target.y, 4, GRAY);

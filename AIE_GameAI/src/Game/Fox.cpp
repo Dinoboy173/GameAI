@@ -44,6 +44,8 @@ Fox::~Fox()
 	SetBehaviour(nullptr);
 
 	delete m_wanderBehaviour;
+	delete m_seekBehaviour;
+	delete m_followPathBehaviour;
 }
 
 void Fox::Update(float dt)
@@ -61,6 +63,7 @@ void Fox::Update(float dt)
 	if (rabbit.x != 0 && rabbit.y != 0)
 	{
 		SetIsChangeBehaviour(true);
+		SetBehaviour(nullptr);
 		SetBehaviour(m_seekBehaviour);
 		m_seekBehaviour->SetTarget(rabbit);
 		m_seekBehaviour->OnArrive([this]()

@@ -33,6 +33,7 @@ Rabbit::~Rabbit()
 
 	delete m_wanderBehaviour;
 	delete m_fleeBehaviour;
+	delete m_followPathBehaviour;
 }
 
 void Rabbit::Update(float dt)
@@ -52,13 +53,15 @@ void Rabbit::Update(float dt)
 	float distToRabbit = Vector2Distance(GetPosition(), rabbit);
 
 	// flee behaviour
-	if (fox.x != 0 && fox.y != 0)
+	if ((fox.x != 0 && fox.y != 0) && distToFox < m_fleeRadius && GetBehaviour() != m_fleeBehaviour)
 	{
+		m_doFollowPath = false;
 		SetIsChangeBehaviour(true);
 		SetBehaviour(m_fleeBehaviour);
 		m_fleeBehaviour->SetTarget(fox);
 		m_fleeBehaviour->OnExit([this]()
 			{
+				m_doFollowPath = false;
 				SetIsChangeBehaviour(true);
 				SetBehaviour(m_wanderBehaviour);
 			});
@@ -67,7 +70,6 @@ void Rabbit::Update(float dt)
 	// follow path behaviour
 	if (m_doFollowPath)
 	{
-		SetIsChangeBehaviour(true);
 		SetBehaviour(m_followPathBehaviour);
 		m_followPathBehaviour->SetPath(m_nodes);
 		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
@@ -91,8 +93,6 @@ void Rabbit::Update(float dt)
 		DoFollowPath(false);
 	}
 
-	// have behaviours send info to follow path
-
 	GameObject::Update(dt);
 
 	// if (distToFox < 16)
@@ -100,8 +100,7 @@ void Rabbit::Update(float dt)
 	// 	m_followPathBehaviour->m_hasStart = false;
 	// 	m_world->RemoveRabbitFromList(this);
 	// }
-		
-
+	
 	//if (distToRabbit < m_mateRadius)
 	//	world->AddRabbit(GetPosition());
 }
