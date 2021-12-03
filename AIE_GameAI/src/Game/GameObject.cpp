@@ -6,7 +6,7 @@
 
 GameObject::GameObject()
 {
-
+	
 }
 
 GameObject::~GameObject()
@@ -83,13 +83,17 @@ Behaviour* GameObject::GetPreviousBehaviour()
 {
 	return m_previousBehviour;
 }
-std::vector<Graph<Vector2, float>::Node*> GameObject::GetNodes()
+std::list<Graph<Vector2, float>::Node*> GameObject::GetNodes()
 {
 	return m_nodes;
 }
 bool GameObject::IsFollowPath()
 {
 	return m_doFollowPath;
+}
+Graph<Vector2, float>::Node* GameObject::GetStartNode()
+{
+	return m_startNode;
 }
 
 // Setters
@@ -122,11 +126,15 @@ void GameObject::SetPreviousBehaviour(Behaviour* behaviour)
 {
 	m_previousBehviour = behaviour;
 }
-void GameObject::SetNodes(std::vector<Graph<Vector2, float>::Node*> nodes)
+void GameObject::SetNodes(std::list<Graph<Vector2, float>::Node*> nodes)
 {
 	m_nodes = nodes;
 }
 void GameObject::DoFollowPath(bool doFollowPath)
 {
 	m_doFollowPath = doFollowPath;
+}
+void GameObject::SetStartNode(Graph<Vector2, float>::Node* startNode)
+{
+	m_startNode = startNode;
 }

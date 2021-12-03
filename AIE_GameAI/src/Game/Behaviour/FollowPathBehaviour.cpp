@@ -35,33 +35,35 @@ void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
 
 void FollowPathBehaviour::Draw(GameObject* obj)
 {
-	// // Draw all connections
-	// for (auto node : m_graph->GetNodes())
-	// {
-	// 	for (auto connection : node->connections)
-	// 	{
-	// 		DrawLine(node->data.x, node->data.y, connection.to->data.x, connection.to->data.y, GRAY);
-	// 	}
-	// }
-	// 
-	// // Draw all nodes
-	// for (auto node : m_graph->GetNodes())
-	// {
-	// 	DrawCircle(node->data.x, node->data.y, 8, LIGHTGRAY);
-	// 	DrawCircleLines(node->data.x, node->data.y, 8, GRAY);
-	// }
+	if (!m_nodes.empty())
+	{
+		auto endNode = *--m_nodes.end();
+		DrawCircleV(endNode->data, m_targetRadius, { 255, 0, 255, 128 });
+	}
+
+	DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
+
+	for (auto node : m_nodes)
+		DrawCircleV(node->data, 5, { 255, 255, 0, 255 });
 }
 
-void FollowPathBehaviour::NextNode()
+void FollowPathBehaviour::NextNode(GameObject* obj)
 {
-	int size = m_nodes.size();
+	if (!m_hasStart)
+	{
+		m_currentNode = m_nodes.begin();
+		m_hasStart = true;
+	}
 	
-	if (m_currentNode < size - 1)
-		m_currentNode++;
+	if (m_currentNode == m_nodes.end())
+		m_currentNode = m_nodes.begin();
 	else
-		m_currentNode = 0;
-	
-	m_target = m_nodes[m_currentNode]->data;
+		m_currentNode++;
+
+	Graph<Vector2, float>::Node* node = *m_currentNode;
+
+	obj->SetStartNode(node);
+	m_target = node->data;
 }
 
 const Vector2& FollowPathBehaviour::GetTarget() const
@@ -99,7 +101,7 @@ Graph2D* FollowPathBehaviour::GetGraph()
 	return m_graph;
 }
 
-void FollowPathBehaviour::SetPath(std::vector<Graph<Vector2, float>::Node*> nodes)
+void FollowPathBehaviour::SetPath(std::list<Graph<Vector2, float>::Node*> nodes)
 {
 	m_nodes = nodes;
 }

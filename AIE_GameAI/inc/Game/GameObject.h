@@ -33,7 +33,9 @@ public:
 	Behaviour* GetBehaviour();
 	Behaviour* GetPreviousBehaviour();
 
-	std::vector<Graph<Vector2, float>::Node*> GetNodes();
+	Graph<Vector2, float>::Node* GetStartNode();
+
+	std::list<Graph<Vector2, float>::Node*> GetNodes();
 	bool IsFollowPath();
 
 	// Setters
@@ -47,7 +49,9 @@ public:
 	void SetBehaviour(Behaviour* behaviour);
 	void SetPreviousBehaviour(Behaviour* behaviour);
 
-	void SetNodes(std::vector<Graph<Vector2, float>::Node*> nodes);
+	void SetStartNode(Graph<Vector2, float>::Node* startNode);
+
+	void SetNodes(std::list<Graph<Vector2, float>::Node*> nodes);
 	void DoFollowPath(bool doFollowPath);
 
 protected:
@@ -59,7 +63,9 @@ protected:
 	float m_maxSpeed = 100.0f;
 	float m_maxForce = 200.0f;
 
-	std::vector<Graph<Vector2, float>::Node*> m_nodes;
+	Graph<Vector2, float>::Node* m_startNode;
+
+	std::list<Graph<Vector2, float>::Node*> m_nodes;
 	bool m_doFollowPath = false;
 
 	Behaviour* m_behaviour = nullptr;

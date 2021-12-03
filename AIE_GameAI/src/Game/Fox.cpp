@@ -62,12 +62,27 @@ void Fox::Update(float dt)
 			});
 	}
 
-	// SetBehaviour(m_followPathBehaviour);
-	// m_followPathBehaviour->SetGraph(world->m_graph);
-	// m_followPathBehaviour->OnArrive([this]()
-	// 	{
-	// 		m_followPathBehaviour->NextNode();
-	// 	});
+	if (m_doFollowPath) // do same for fox
+	{
+		SetBehaviour(m_followPathBehaviour);
+		m_followPathBehaviour->SetPath(m_nodes);
+		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
+		m_followPathBehaviour->OnArrive([this]()
+			{
+				if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
+					m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
+				{
+					m_followPathBehaviour->m_hasStart = false;
+					SetBehaviour(GetPreviousBehaviour());
+				}
+				else
+				{
+					m_followPathBehaviour->NextNode(this);
+				}
+			});
+
+		DoFollowPath(false);
+	}
 
 	// auto desiredBehaviour = CalculateDesiredBehaviour();
 	// if (desiredBehaviour != GetBehaviour())

@@ -37,12 +37,18 @@ void BuildWorld::Load()
 				Rabbit* rabbit = new Rabbit(this);
 				rabbit->SetPosition({ x * (float)m_tileSize + 16, y * (float)m_tileSize + 16});
 				m_rabbitList.push_back(rabbit);
+
+				auto startNode = m_graph->GetClosestNode(rabbit->GetPosition(), 10);
+				rabbit->SetStartNode(startNode);
 			}
 			else if (color == C_RED)
 			{
 				Fox* fox = new Fox(this);
 				fox->SetPosition({ x * (float)m_tileSize + 16, y * (float)m_tileSize + 16 });
 				m_foxList.push_back(fox);
+
+				auto startNode = m_graph->GetClosestNode(fox->GetPosition(), 10);
+				fox->SetStartNode(startNode);
 			}
 		}
 	}

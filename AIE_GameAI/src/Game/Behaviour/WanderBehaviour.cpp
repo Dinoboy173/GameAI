@@ -53,35 +53,20 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 			return;
 		}
 
-		auto startNode = m_world->m_graph->GetClosestNode(obj->GetPosition(), 40);
-
 		auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 128);
 
 		auto func = [=](auto node) {return node == closestWPNode; };
 
 		if (closestWPNode != nullptr)
 		{
-			auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, startNode, func);
+			auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, obj->GetStartNode(), func);
 
-			std::vector<Graph<Vector2, float>::Node*> vNodes;
-
-			for (const auto& node : nodes)
-				vNodes.push_back(node);
-
-			obj->SetNodes(vNodes);
+			obj->SetNodes(nodes);
 			obj->DoFollowPath(true);
-
-			// wanderPoint = closestWPNode->data;
 		}
-
-		// SetTarget(wanderPoint);
-		// m_wanderCenter = wanderCenter;
-		// m_wanderPoint = wanderPoint;
+		else
+			return;
 	}
-
-	// Vector2 wanderTotalDistance = Vector2Scale(Vector2Normalize(Vector2Subtract(m_wanderPoint, obj->GetPosition())), obj->GetMaxForce());
-	// 
-	// obj->ApplyForce(wanderTotalDistance);
 }
 
 void WanderBehaviour::Draw(GameObject* obj)
