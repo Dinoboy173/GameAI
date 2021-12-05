@@ -53,9 +53,9 @@ void Rabbit::Update(float dt)
 	float distToRabbit = Vector2Distance(GetPosition(), rabbit);
 
 	// flee behaviour
-	if ((fox.x != 0 && fox.y != 0) && distToFox < m_fleeRadius && GetBehaviour() != m_fleeBehaviour)
+	if ((fox.x != 0 && fox.y != 0) && GetPreviousBehaviour() != m_fleeBehaviour)
 	{
-		m_doFollowPath = false;
+		// m_doFollowPath = false;
 		SetIsChangeBehaviour(true);
 		SetBehaviour(m_fleeBehaviour);
 		m_fleeBehaviour->SetTarget(fox);
@@ -86,8 +86,6 @@ void Rabbit::Update(float dt)
 				{
 					m_followPathBehaviour->NextNode(this);
 				}
-
-				DoFollowPath(false);
 			});
 
 		DoFollowPath(false);
@@ -109,12 +107,12 @@ void Rabbit::Draw()
 {
 	bool behaviourDebug = false;
 
-	// draw velocity line
-
 	if (IsKeyDown(KeyboardKey(KEY_F3)))
 		GetBehaviour()->Draw(this);
 
 	GameObject::Draw(ASSETS->imgRabbit, ASSETS->rabbit, m_position.x, m_position.y);
+
+	GameObject::Draw();
 }
 
 void Rabbit::SetBehaviourFollow()

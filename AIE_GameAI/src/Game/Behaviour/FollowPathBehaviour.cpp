@@ -46,6 +46,8 @@ void FollowPathBehaviour::Draw(GameObject* obj)
 		auto endNode = *--m_nodes.end();
 		DrawCircleV(endNode->data, m_targetRadius, { 255, 0, 255, 128 });
 	}
+	else
+		return;
 
 	DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
 
@@ -55,6 +57,13 @@ void FollowPathBehaviour::Draw(GameObject* obj)
 
 void FollowPathBehaviour::NextNode(GameObject* obj)
 {
+	if (!m_tempNodes.empty())
+	{
+		m_nodes = m_tempNodes;
+		m_tempNodes.clear();
+		m_currentNodePos = 0;
+	}
+
 	if (m_nodes.empty())
 		return;
 
@@ -68,8 +77,11 @@ void FollowPathBehaviour::NextNode(GameObject* obj)
 	{
 		if (m_currentNode == m_nodes.end())
 			m_currentNode = m_nodes.begin();
-		else
+		else if (m_currentNodePos < m_nodes.size())
+		{
 			m_currentNode++;
+			m_currentNodePos++;
+		}
 
 		Graph<Vector2, float>::Node* node = *m_currentNode;
 
@@ -79,6 +91,7 @@ void FollowPathBehaviour::NextNode(GameObject* obj)
 	
 	if (obj->GetIsChangeBehaviour())
 	{
+		m_currentNode = m_nodes.begin();
 		obj->SetIsChangeBehaviour(false);
 	}
 }
@@ -120,5 +133,5 @@ Graph2D* FollowPathBehaviour::GetGraph()
 
 void FollowPathBehaviour::SetPath(std::list<Graph<Vector2, float>::Node*> nodes)
 {
-	m_nodes = nodes;
+	m_tempNodes = nodes;
 }

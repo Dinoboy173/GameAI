@@ -40,10 +40,12 @@ protected:
 	Vector2 m_target;
 	float m_targetRadius = 1.0f;
 
+	int m_currentNodePos = 0;
 	std::list<Graph<Vector2, float>::Node*>::iterator m_currentNode;
 
 	// list of nodes
 	std::list<Graph<Vector2, float>::Node*> m_nodes;
+	std::list<Graph<Vector2, float>::Node*> m_tempNodes;
 
 private:
 

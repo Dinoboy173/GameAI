@@ -19,20 +19,9 @@ Fox::Fox(BuildWorld* world)
 	m_seekBehaviour = new SeekBehaviour(world);
 	m_seekBehaviour->SetTargetRadius(m_seekRadius);
 
-	// TODO 1: create followPathBehaviour
 	// follow path
 	m_followPathBehaviour = new FollowPathBehaviour();
 	m_followPathBehaviour->SetTargetRadius(10.0f);
-
-	// TODO 2: set a hardcoded path
-
-	// get node at closest position to
-
-	// get fox and rabbit to follow path then merge dikstra with follow path
-
-	// auto path = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, m_world->m_graph->GetNodes().front(), [](auto node) {
-	// 	return node->data == Vector2{ 64, 64 };
-	// 	});
 	
 	SetBehaviour(m_wanderBehaviour);
 
@@ -56,21 +45,25 @@ void Fox::Update(float dt)
 	if (GetPosition().x > 1024 || GetPosition().y > 1024)
 		SetPosition({ 976, 976 });
 
-	// auto m_world->IsRabbitNearby();
-
 	Vector2 rabbit = m_world->IsRabbitNearby(this, m_seekRadius);
 
-	if (rabbit.x != 0 && rabbit.y != 0)
+	// seek behaviour
+	if (rabbit.x != 0 && rabbit.y != 0 && GetPreviousBehaviour() != m_seekBehaviour)
 	{
 		SetIsChangeBehaviour(true);
-		SetBehaviour(nullptr);
 		SetBehaviour(m_seekBehaviour);
 		m_seekBehaviour->SetTarget(rabbit);
 		m_seekBehaviour->OnArrive([this]()
 			{
+				m_doFollowPath = false;
 				SetIsChangeBehaviour(true);
 				SetBehaviour(m_wanderBehaviour);
 			});
+	}
+
+	if (GetPreviousBehaviour() == m_seekBehaviour)
+	{
+		m_seekBehaviour->SetTarget(rabbit);
 	}
 
 	if (m_doFollowPath)
@@ -92,8 +85,6 @@ void Fox::Update(float dt)
 				{
 					m_followPathBehaviour->NextNode(this);
 				}
-
-				DoFollowPath(false);
 			});
 
 		DoFollowPath(false);
@@ -116,6 +107,8 @@ void Fox::Draw()
 		GetBehaviour()->Draw(this);
 
 	GameObject::Draw(ASSETS->imgFox, ASSETS->fox, m_position.x, m_position.y);
+
+	GameObject::Draw();
 }
 
 Behaviour* Fox::CalculateDesiredBehaviour(BuildWorld* world)

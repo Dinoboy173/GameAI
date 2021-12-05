@@ -26,6 +26,8 @@ public:
 
 protected:
 
+	Vector2 m_fleePoint = { 0.0f, 0.0f };
+
 	Vector2 m_target;
 	float m_targetRadius = 1.0f;
 	int m_windowSize = 1024;

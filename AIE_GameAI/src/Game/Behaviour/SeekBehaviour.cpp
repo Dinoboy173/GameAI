@@ -16,28 +16,18 @@ SeekBehaviour::~SeekBehaviour()
 
 void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 {
-	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
-	if (distToTarget < m_targetRadius)
+	float distToSp = Vector2Length(Vector2Subtract(m_seekPoint, obj->GetPosition()));
+	float targetDist = Vector2Length(Vector2Subtract(m_target, obj->GetPosition()));
+
+	obj->SetPreviousBehaviour(this);
+
+	if (distToSp < 10 || targetDist >= m_targetRadius)
 		if (m_onArrivedFn)
 			m_onArrivedFn();
 
-	Vector2 heading = Vector2Add(obj->GetPosition(), obj->GetVelocity());
-
-	Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(m_target, obj->GetPosition()));
-	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
-	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
-
-	if (targetForcePos.x <= 0 ||
-		targetForcePos.x >= m_windowSize ||
-		targetForcePos.y <= 0 ||
-		targetForcePos.y >= m_windowSize)
-	{
-		targetForcePos.x -= targetForcePos.x;
-		targetForcePos.y -= targetForcePos.y;
-	}
+	obj->SetPreviousBehaviour(this);
 
 	auto closestWPNode = m_world->m_graph->GetClosestNode(m_target, 128);
-
 	auto func = [=](auto node) {return node == closestWPNode; };
 
 	if (closestWPNode != nullptr)
@@ -49,19 +39,12 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 	}
 	else
 		return;
-
-	Vector2 forceDir = Vector2Scale(Vector2Normalize(Vector2Subtract(targetForcePos, heading)), obj->GetMaxForce());
-
-	obj->ApplyForce(forceDir);
 }
 
 void SeekBehaviour::Draw(GameObject* obj)
 {
-	// DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
-	// DrawCircleV(m_target, 5, { 0, 0, 0, 128 });
-
-	// DrawCircle(m_target.x, m_target.y, m_targetRadius, LIGHTGRAY);
-	// DrawCircle(m_target.x, m_target.y, 4, GRAY);
+	DrawCircleV(m_target, m_targetRadius, { 255, 0, 0, 128 });
+	DrawCircleV(m_seekPoint, 5, { 0, 0, 0, 128 });
 }
 
 const Vector2& SeekBehaviour::GetTarget() const
