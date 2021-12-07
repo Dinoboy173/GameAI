@@ -14,7 +14,7 @@ SeekBehaviour::~SeekBehaviour()
 	
 }
 
-void SeekBehaviour::Update(GameObject* obj, float deltaTime)
+void SeekBehaviour::Update(GameObject* obj)
 {
 	float distToSp = Vector2Length(Vector2Subtract(m_seekPoint, obj->GetPosition()));
 	float targetDist = Vector2Length(Vector2Subtract(m_target, obj->GetPosition()));

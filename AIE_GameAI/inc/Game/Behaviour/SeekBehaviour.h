@@ -14,7 +14,7 @@ public:
 	SeekBehaviour(BuildWorld* world);
 	virtual ~SeekBehaviour();
 
-	virtual void Update(GameObject* obj, float deltaTime);
+	virtual void Update(GameObject* obj);
 	virtual void Draw(GameObject* obj);
 
 	const Vector2& GetTarget() const;

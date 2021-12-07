@@ -68,7 +68,6 @@ void Fox::Update(float dt)
 
 	if (m_doFollowPath)
 	{
-		SetIsChangeBehaviour(true);
 		SetBehaviour(m_followPathBehaviour);
 		m_followPathBehaviour->SetPath(m_nodes);
 		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
