@@ -21,7 +21,7 @@ void SeekBehaviour::Update(GameObject* obj)
 
 	obj->SetPreviousBehaviour(this);
 
-	if (distToSp < 10 || targetDist >= m_targetRadius)
+	if (distToSp < 10)
 		if (m_onArrivedFn)
 			m_onArrivedFn();
 

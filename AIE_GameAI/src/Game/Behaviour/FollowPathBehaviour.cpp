@@ -25,7 +25,7 @@ void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
 
-	if (distToTarget < m_targetRadius || obj->GetIsChangeBehaviour())
+	if (distToTarget < m_targetRadius || obj->GetIsChangeBehaviour() || (m_target.x == 0 && m_target.y == 0))
 		if (m_onArrivedFn)
 			m_onArrivedFn();
 
