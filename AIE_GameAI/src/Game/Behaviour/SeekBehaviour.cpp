@@ -19,7 +19,7 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 	float distToSp = Vector2Length(Vector2Subtract(m_seekPoint, obj->GetPosition()));
 	float targetDist = Vector2Length(Vector2Subtract(m_target, obj->GetPosition()));
 
-	if (distToSp < 10 || (m_seekPoint.x == 0 && m_seekPoint.y ==0))
+	if (targetDist > 100 || (m_seekPoint.x == 0 && m_seekPoint.y ==0))
 		if (m_onArrivedFn)
 		{
 			m_onArrivedFn();
