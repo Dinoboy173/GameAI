@@ -47,11 +47,10 @@ void Fox::Update(float dt)
 
 	Vector2 rabbit = m_world->IsRabbitNearby(this, m_seekRadius);
 
-	if ((rabbit.x == 0 && rabbit.y == 0) && GetPreviousBehaviour() != m_wanderBehaviour)
-		SetBehaviour(m_wanderBehaviour);
+	float distToRabbit = Vector2Length(Vector2Subtract(rabbit, GetPosition()));
 
 	// seek behaviour
-	if (rabbit.x != 0 && rabbit.y != 0)// && GetPreviousBehaviour() != m_seekBehaviour)
+	if ((rabbit.x != 0 && rabbit.y != 0) && GetPreviousBehaviour() != m_seekBehaviour && distToRabbit < m_seekRadius) //GetPreviousBehaviour() == m_wanderBehaviour && GetBehaviour() == m_followPathBehaviour)
 	{
 		SetIsChangeBehaviour(true);
 		SetBehaviour(m_seekBehaviour);
@@ -62,11 +61,6 @@ void Fox::Update(float dt)
 				SetIsChangeBehaviour(true);
 				SetBehaviour(m_wanderBehaviour);
 			});
-	}
-
-	if (GetPreviousBehaviour() == m_seekBehaviour)
-	{
-		m_seekBehaviour->SetTarget(rabbit);
 	}
 
 	if (m_doFollowPath)
@@ -85,9 +79,6 @@ void Fox::Update(float dt)
 				}
 				else
 				{
-					if (GetPreviousBehaviour() == m_seekBehaviour)
-						SetBehaviour(m_seekBehaviour);
-
 					m_followPathBehaviour->NextNode(this);
 				}
 			});

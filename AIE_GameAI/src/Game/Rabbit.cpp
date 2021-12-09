@@ -93,11 +93,12 @@ void Rabbit::Update(float dt)
 
 	GameObject::Update(dt);
 
-	// if (distToFox < 16)
-	// {
-	// 	m_followPathBehaviour->m_hasStart = false;
-	// 	m_world->RemoveRabbitFromList(this);
-	// }
+	if (distToFox < 16)
+	{
+		m_doFollowPath = false;
+		m_followPathBehaviour->m_hasStart = false;
+		m_world->RemoveRabbitFromList(this);
+	}
 	
 	//if (distToRabbit < m_mateRadius)
 	//	world->AddRabbit(GetPosition());

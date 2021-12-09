@@ -16,27 +16,22 @@ FleeBehaviour::~FleeBehaviour()
 
 void FleeBehaviour::Update(GameObject* obj, float deltaTime)
 {
-	float distToFp = Vector2Length(Vector2Subtract(m_fleePoint, obj->GetPosition()));
+	float distFromTarget = Vector2Length(Vector2Subtract(m_target, obj->GetPosition()));
 
-	if (distToFp < 10)
+	if (distFromTarget > 100)
 		if (m_onExitedFn)
+		{
 			m_onExitedFn();
+			return;
+		}
 
 	obj->SetPreviousBehaviour(this);
 
-	auto angle = (rand() % 360) * PI / 180.0f;
-	Vector2 displace = { sin(angle) * m_targetRadius * 2, cos(angle) * m_targetRadius * 2};
+	Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(obj->GetPosition(), m_target));
+	Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
+	Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
 
-	Vector2 fleePoint = Vector2Add(m_target, displace);
-	m_fleePoint = fleePoint;
-
-	// Vector2 heading = Vector2Add(obj->GetPosition(), obj->GetVelocity());
-	// 
-	// Vector2 desiredDirToTarget = Vector2Normalize(Vector2Subtract(obj->GetPosition(), m_target));
-	// Vector2 desiredVelocity = Vector2Scale(desiredDirToTarget, obj->GetMaxSpeed());
-	// Vector2 targetForcePos = Vector2Add(desiredVelocity, obj->GetPosition());
-
-	auto closestWPNode = m_world->m_graph->GetClosestNode(fleePoint, 128);
+	auto closestWPNode = m_world->m_graph->GetClosestNode(targetForcePos, 128);
 
 	auto func = [=](auto node) {return node == closestWPNode; };
 

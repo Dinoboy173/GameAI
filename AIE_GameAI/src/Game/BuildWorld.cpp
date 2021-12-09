@@ -109,12 +109,14 @@ void BuildWorld::Update(float dt)
 {
 	for (auto i : m_rabbitList)
 	{
-		i->Update(dt);
+		if (m_rabbitList.size() != 0)
+			i->Update(dt);
 	}
 
 	for (auto i : m_foxList)
 	{
-		i->Update(dt);
+		if (m_foxList.size() != 0)
+			i->Update(dt);
 	}
 }
 
