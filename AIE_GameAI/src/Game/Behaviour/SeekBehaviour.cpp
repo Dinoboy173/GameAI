@@ -18,7 +18,7 @@ void SeekBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float targetDist = Vector2Length(Vector2Subtract(m_target, obj->GetPosition()));
 
-	if (targetDist > 100 || obj->GetKilledEntity() || obj->GetNodes().size() == 0)
+	if (obj->GetKilledEntity() || obj->GetNodes().size() <= 1)
 		if (m_onArrivedFn)
 		{
 			m_onArrivedFn();
