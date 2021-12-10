@@ -95,6 +95,10 @@ bool GameObject::GetIsChangeBehaviour()
 {
 	return m_isChangingBehaviour;
 }
+bool GameObject::GetKilledEntity()
+{
+	return m_killedEntity;
+}
 
 // Setters
 void GameObject::SetPosition(const Vector2& pos)
@@ -142,4 +146,8 @@ void GameObject::DoFollowPath(bool doFollowPath)
 void GameObject::SetIsChangeBehaviour(bool isChangingBehaviour)
 {
 	m_isChangingBehaviour = isChangingBehaviour;
+}
+void GameObject::SetKilledEntity(bool killedEntity)
+{
+	m_killedEntity = killedEntity;
 }

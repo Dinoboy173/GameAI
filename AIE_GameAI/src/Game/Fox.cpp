@@ -46,12 +46,15 @@ void Fox::Update(float dt)
 		SetPosition({ 976, 976 });
 
 	Vector2 rabbit = m_world->IsRabbitNearby(this, m_seekRadius);
-
 	float distToRabbit = Vector2Length(Vector2Subtract(rabbit, GetPosition()));
+	
+	if (distToRabbit < 16 && !m_killedEntity)
+		m_killedEntity = true;
 
 	// seek behaviour
-	if ((rabbit.x != 0 && rabbit.y != 0) && GetPreviousBehaviour() != m_seekBehaviour && distToRabbit < m_seekRadius) //GetPreviousBehaviour() == m_wanderBehaviour && GetBehaviour() == m_followPathBehaviour)
+	if ((rabbit.x != 0 && rabbit.y != 0) && GetPreviousBehaviour() != m_seekBehaviour)
 	{
+		m_killedEntity = false;
 		SetIsChangeBehaviour(true);
 		SetBehaviour(m_seekBehaviour);
 		m_seekBehaviour->SetTarget(rabbit);
@@ -65,27 +68,30 @@ void Fox::Update(float dt)
 
 	if (m_doFollowPath)
 	{
-		SetBehaviour(m_followPathBehaviour);
-		m_followPathBehaviour->SetPath(m_nodes);
-		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
-		m_followPathBehaviour->OnArrive([this]()
-			{
-				if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
-					m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
+		if (m_nodes.size() != 0)
+		{
+			SetBehaviour(m_followPathBehaviour);
+			m_followPathBehaviour->SetPath(m_nodes);
+			m_followPathBehaviour->SetTarget(m_nodes.front()->data);
+			m_followPathBehaviour->OnArrive([this]()
 				{
-					SetIsChangeBehaviour(true);
-					m_followPathBehaviour->m_hasStart = false;
-					SetBehaviour(GetPreviousBehaviour());
-				}
-				else
-				{
-					m_followPathBehaviour->NextNode(this);
-				}
-			});
+					if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
+						m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
+					{
+						SetIsChangeBehaviour(true);
+						m_followPathBehaviour->m_hasStart = false;
+						SetBehaviour(GetPreviousBehaviour());
+					}
+					else
+					{
+						m_followPathBehaviour->NextNode(this);
+					}
+				});
 
-		DoFollowPath(false);
+			DoFollowPath(false);
+		}
 	}
-
+	
 	// auto desiredBehaviour = CalculateDesiredBehaviour();
 	// if (desiredBehaviour != GetBehaviour())
 	// {

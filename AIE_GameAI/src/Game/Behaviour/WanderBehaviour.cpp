@@ -42,6 +42,8 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 	Vector2 wanderPoint = Vector2Add(wanderCenter, displace);
 	m_wanderPoint = wanderPoint;
 
+	auto startNodeBackUp = m_world->m_graph->GetClosestNode(obj->GetPosition(), 128);
+
 	auto closestWPNode = m_world->m_graph->GetClosestNode(wanderPoint, 128);
 	auto func = [=](auto node) {return node == closestWPNode; };
 
@@ -49,8 +51,14 @@ void WanderBehaviour::Update(GameObject* obj, float deltaTime)
 	{
 		auto nodes = m_world->m_graph->FindPath(IGraph::SearchType::DIJKSTRA, obj->GetStartNode(), func);
 
-		obj->SetNodes(nodes);
+		if (nodes.size() == 0)
+		{
+			obj->SetStartNode(startNodeBackUp);
+			return;
+		}
+
 		obj->DoFollowPath(true);
+		obj->SetNodes(nodes);
 	}
 	else
 		return;

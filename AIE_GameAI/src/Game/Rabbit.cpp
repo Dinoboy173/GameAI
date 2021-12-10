@@ -70,25 +70,28 @@ void Rabbit::Update(float dt)
 	// follow path behaviour
 	if (m_doFollowPath)
 	{
-		SetBehaviour(m_followPathBehaviour);
-		m_followPathBehaviour->SetPath(m_nodes);
-		m_followPathBehaviour->SetTarget(m_nodes.front()->data);
-		m_followPathBehaviour->OnArrive([this]()
-			{
-				if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
-					m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
+		if (m_nodes.size() != 0)
+		{
+			SetBehaviour(m_followPathBehaviour);
+			m_followPathBehaviour->SetPath(m_nodes);
+			m_followPathBehaviour->SetTarget(m_nodes.front()->data);
+			m_followPathBehaviour->OnArrive([this]()
 				{
-					SetIsChangeBehaviour(true);
-					m_followPathBehaviour->m_hasStart = false;
-					SetBehaviour(GetPreviousBehaviour());
-				}
-				else
-				{
-					m_followPathBehaviour->NextNode(this);
-				}
-			});
+					if (m_followPathBehaviour->GetTarget().x == m_nodes.back()->data.x &&
+						m_followPathBehaviour->GetTarget().y == m_nodes.back()->data.y)
+					{
+						SetIsChangeBehaviour(true);
+						m_followPathBehaviour->m_hasStart = false;
+						SetBehaviour(GetPreviousBehaviour());
+					}
+					else
+					{
+						m_followPathBehaviour->NextNode(this);
+					}
+				});
 
-		DoFollowPath(false);
+			DoFollowPath(false);
+		}
 	}
 
 	GameObject::Update(dt);

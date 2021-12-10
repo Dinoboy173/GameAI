@@ -25,7 +25,7 @@ void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
 {
 	float distToTarget = Vector2Distance(obj->GetPosition(), m_target);
 
-	if (distToTarget < m_targetRadius || obj->GetIsChangeBehaviour() || (m_target.x == 0 && m_target.y == 0))
+	if (distToTarget < m_targetRadius || obj->GetIsChangeBehaviour() || (m_target.x <= 0 && m_target.y <= 0))
 		if (m_onArrivedFn)
 			m_onArrivedFn();
 
@@ -76,13 +76,16 @@ void FollowPathBehaviour::NextNode(GameObject* obj)
 	if (!obj->GetIsChangeBehaviour()) // turn follow behaviour off before changing to another behaviour
 	{
 		if (m_currentNode == m_nodes.end())
+		{
 			m_currentNode = m_nodes.begin();
-		else if (m_currentNodePos < m_nodes.size())
+			m_currentNodePos = 0;
+		}
+		else if (m_currentNodePos < m_nodes.size() - 1)
 		{
 			m_currentNode++;
 			m_currentNodePos++;
 		}
-
+		
 		Graph<Vector2, float>::Node* node = *m_currentNode;
 
 		obj->SetStartNode(node);

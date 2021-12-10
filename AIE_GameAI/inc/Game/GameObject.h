@@ -38,6 +38,7 @@ public:
 
 	bool IsFollowPath();
 	bool GetIsChangeBehaviour();
+	bool GetKilledEntity();
 
 	// Setters
 	void SetPosition(const Vector2& pos);
@@ -55,6 +56,7 @@ public:
 
 	void DoFollowPath(bool doFollowPath);
 	void SetIsChangeBehaviour(bool isChangingBehaviour);
+	void SetKilledEntity(bool killedEntity);
 
 protected:
 
@@ -64,6 +66,8 @@ protected:
 	float m_friction = 2.0f;
 	float m_maxSpeed = 100.0f;
 	float m_maxForce = 200.0f;
+
+	bool m_killedEntity = false;
 
 	Graph<Vector2, float>::Node* m_startNode;
 
