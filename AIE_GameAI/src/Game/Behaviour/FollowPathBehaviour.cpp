@@ -11,14 +11,7 @@ FollowPathBehaviour::FollowPathBehaviour() : Behaviour()
 
 FollowPathBehaviour::~FollowPathBehaviour()
 {
-	delete m_graph;
-	m_graph = nullptr;
-
-	for (auto node : m_nodes)
-	{
-		delete node;
-		node = nullptr;
-	}
+	m_nodes.clear();
 }
 
 void FollowPathBehaviour::Update(GameObject* obj, float deltaTime)
